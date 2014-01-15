@@ -23,12 +23,20 @@ import edu.wpi.first.wpilibj.Talon;
  */
 public class RobotTemplate extends SimpleRobot {
     
-    RobotDrive chasis = new RobotDrive(new Talon(4),new Talon(3),new Talon(1),new Talon(2));
-    Joystick moveStick = new Joystick(1);
-    Joystick rotateStick = new Joystick(2);
+    RobotDrive chasis;
+    Joystick moveStick;
+    Joystick rotateStick;
     /**
      * This function is called once each time the robot enters autonomous mode.
      */
+    
+    protected void robotInit() {
+        super.robotInit(); //To change body of generated methods, choose Tools | Templates.
+        
+        chasis = new RobotDrive(new Talon(1, 4),new Talon(1, 3),new Talon(1, 1),new Talon(1, 2));
+        moveStick = new Joystick(1);
+        rotateStick = new Joystick(2);
+    }
     public void autonomous() {
         chasis.setSafetyEnabled(false);
         chasis.drive(-0.5, 0.0);
@@ -40,9 +48,11 @@ public class RobotTemplate extends SimpleRobot {
      * This function is called once each time the robot enters operator control.
      */
     public void operatorControl() {
+        System.out.println("Entered Operator Control");
         chasis.setSafetyEnabled(true);
         while(isOperatorControl() && isEnabled()){
-            chasis.mecanumDrive_Polar(moveStick.getY(), moveStick.getX(), rotateStick.getTwist());
+            chasis.arcadeDrive(moveStick);
+            //chasis.mecanumDrive_Polar(moveStick.getY(), moveStick.getX(), rotateStick.getTwist());
             Timer.delay(0.01);
         }
     }
