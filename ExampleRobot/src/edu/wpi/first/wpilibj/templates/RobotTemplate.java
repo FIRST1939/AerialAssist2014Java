@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SimpleRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -36,10 +37,14 @@ public class RobotTemplate extends SimpleRobot {
     
     protected void robotInit() {
         //super.robotInit(); //To change body of generated methods, choose Tools | Templates.
-        leftFront = new Talon(1);
-        leftRear = new Talon(2);
-        rightFront = new Talon(3);
-        rightRear = new Talon(4);
+        leftFront = new Talon(1, 1);
+        LiveWindow.addActuator("Drivetrain", "leftFront", (Talon) leftFront);
+        leftRear = new Talon(1, 2);
+        LiveWindow.addActuator("Drivetrain", "leftRear", (Talon) leftRear);
+        rightFront = new Talon(1, 3);
+        LiveWindow.addActuator("Drivetrain", "rightFront", (Talon) rightFront);
+        rightRear = new Talon(1, 4);
+        LiveWindow.addActuator("Drivetrain", "rightRear", (Talon) rightRear);
         chasis = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
         moveStick = new Joystick(1);
         rotateStick = new Joystick(2);
