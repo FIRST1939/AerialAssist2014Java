@@ -42,6 +42,7 @@ public class  DriveWithJoyStick extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        System.out.println("Drive");
         chasis.mecanumDrive_Polar(oi.moveStick.getX(), oi.rotateStick.getY(), oi.rotateStick.getTwist());
     }
 

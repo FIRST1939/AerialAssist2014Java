@@ -26,16 +26,24 @@ public class RobotTemplate extends SimpleRobot {
     RobotDrive chasis;
     Joystick moveStick;
     Joystick rotateStick;
+    Talon leftFront;
+    Talon leftRear;
+    Talon rightFront;
+    Talon rightRear;
     /**
      * This function is called once each time the robot enters autonomous mode.
      */
     
     protected void robotInit() {
-        super.robotInit(); //To change body of generated methods, choose Tools | Templates.
-        
-        chasis = new RobotDrive(new Talon(1, 4),new Talon(1, 3),new Talon(1, 1),new Talon(1, 2));
+        //super.robotInit(); //To change body of generated methods, choose Tools | Templates.
+        leftFront = new Talon(1);
+        leftRear = new Talon(2);
+        rightFront = new Talon(3);
+        rightRear = new Talon(4);
+        chasis = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
         moveStick = new Joystick(1);
         rotateStick = new Joystick(2);
+        System.out.println("Robot Initialized");
     }
     public void autonomous() {
         chasis.setSafetyEnabled(false);
@@ -49,10 +57,10 @@ public class RobotTemplate extends SimpleRobot {
      */
     public void operatorControl() {
         System.out.println("Entered Operator Control");
-        chasis.setSafetyEnabled(true);
+        chasis.setSafetyEnabled(false);
+        leftFront.set(1.0);
         while(isOperatorControl() && isEnabled()){
-            chasis.arcadeDrive(moveStick);
-            //chasis.mecanumDrive_Polar(moveStick.getY(), moveStick.getX(), rotateStick.getTwist());
+            chasis.mecanumDrive_Polar(moveStick.getY(), moveStick.getX(), rotateStick.getTwist());
             Timer.delay(0.01);
         }
     }
