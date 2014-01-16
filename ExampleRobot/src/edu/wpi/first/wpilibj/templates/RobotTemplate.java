@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.SimpleRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -37,17 +38,28 @@ public class RobotTemplate extends SimpleRobot {
     
     protected void robotInit() {
         //super.robotInit(); //To change body of generated methods, choose Tools | Templates.
-        leftFront = new Talon(1, 1);
-        LiveWindow.addActuator("Drivetrain", "leftFront", (Talon) leftFront);
-        leftRear = new Talon(1, 2);
-        LiveWindow.addActuator("Drivetrain", "leftRear", (Talon) leftRear);
-        rightFront = new Talon(1, 3);
-        LiveWindow.addActuator("Drivetrain", "rightFront", (Talon) rightFront);
-        rightRear = new Talon(1, 4);
-        LiveWindow.addActuator("Drivetrain", "rightRear", (Talon) rightRear);
+        LiveWindow.setEnabled(true);
+        
+        leftFront = new Talon(1);
+        LiveWindow.addActuator("Drivetrain", "leftFront", leftFront);
+        SmartDashboard.putNumber("leftFront", leftFront.getSpeed());
+        leftRear = new Talon(2);
+        LiveWindow.addActuator("Drivetrain", "leftRear", leftRear);
+        SmartDashboard.putNumber("leftRear", leftRear.getSpeed());
+        rightFront = new Talon(3);
+        LiveWindow.addActuator("Drivetrain", "rightFront", rightFront);
+        SmartDashboard.putNumber("rightFront", rightFront.getSpeed());
+        rightRear = new Talon(4);
+        LiveWindow.addActuator("Drivetrain", "rightRear", rightRear);
+        SmartDashboard.putNumber("rightRear", rightRear.getSpeed());
+        
         chasis = new RobotDrive(leftFront, leftRear, rightFront, rightRear);
+        chasis.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
+        chasis.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+        
         moveStick = new Joystick(1);
         rotateStick = new Joystick(2);
+        
         System.out.println("Robot Initialized");
     }
     public void autonomous() {
