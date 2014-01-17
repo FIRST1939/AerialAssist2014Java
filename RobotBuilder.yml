@@ -144,7 +144,7 @@ Children:
           name: Safety Expiration Time, validators: null, value: 0.1}
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: DriveWithJoyStick}
+        name: Default Command, type: Command, validators: null, value: DriveWithJoyStickCommand}
   Properties: {}
 - Name: Operator Interface
   Base: OI
@@ -152,7 +152,7 @@ Children:
   - Name: moveStick
     Base: Joystick
     Children:
-    - Name: Camera
+    - Name: TakePhoto
       Base: Joystick Button
       Children: []
       Properties:
@@ -160,63 +160,38 @@ Children:
           default: None
           name: Command
           type: Command
-          validators: &id006 [TypeDropdownSelected]
-          value: CameraTarget
+          validators: [TypeDropdownSelected]
+          value: TakePhotoCommand
         Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id007 ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11',
-            '12']
+          choices: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
           default: '1'
           name: Button
           validators: null
-          value: '3'
+          value: '1'
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
           name: Joystick, validators: null, value: moveStick}
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: &id008 [whileHeld, whenPressed, whenReleased]
+          choices: [whileHeld, whenPressed, whenReleased]
           default: whileHeld
           name: When to Run
           validators: null
           value: whenPressed
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: &id009 ['1', '2', '3', '4']
+        choices: &id006 ['1', '2', '3', '4']
         default: 1
         name: Number
-        validators: &id010 [Joystick]
+        validators: &id007 [Joystick]
         value: '1'
   - Name: rotateStick
     Base: Joystick
-    Children:
-    - Name: Shoot Button
-      Base: Joystick Button
-      Children: []
-      Properties:
-        Command: !!robotbuilder.data.properties.TypeSelectionProperty
-          default: None
-          name: Command
-          type: Command
-          validators: *id006
-          value: Button Pressed
-        Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id007
-          default: '1'
-          name: Button
-          validators: null
-          value: '2'
-        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: rotateStick}
-        When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id008
-          default: whileHeld
-          name: When to Run
-          validators: null
-          value: whenPressed
+    Children: []
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
-        choices: *id009
+        choices: *id006
         default: 1
         name: Number
-        validators: *id010
+        validators: *id007
         value: '2'
   Properties: {}
 - Name: Commands
@@ -230,7 +205,7 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: None}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
-  - Name: DriveWithJoyStick
+  - Name: DriveWithJoyStickCommand
     Base: Command
     Children: []
     Properties:
@@ -238,15 +213,7 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: Drivetrain}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
-  - Name: Button Pressed
-    Base: Command
-    Children: []
-    Properties:
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: None}
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
-  - Name: CameraTarget
+  - Name: TakePhotoCommand
     Base: Command
     Children: []
     Properties:
