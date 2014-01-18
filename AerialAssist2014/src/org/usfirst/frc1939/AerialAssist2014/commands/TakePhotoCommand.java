@@ -27,22 +27,17 @@ public class  TakePhotoCommand extends Command {
     //final double VIEW_ANGLE = 41.7;		//Axis 206 camera
     final double VIEW_ANGLE = 37.4;  //Axis M1011 camera
     final double PI = 3.141592653;
-
     //Score limits used for target identification
     final int  RECTANGULARITY_LIMIT = 40;
     final int ASPECT_RATIO_LIMIT = 55;
-
     //Score limits used for hot target determination
     final int TAPE_WIDTH_LIMIT = 50;
     final int  VERTICAL_SCORE_LIMIT = 50;
     final int LR_SCORE_LIMIT = 50;
-
     //Minimum area of particles to be considered
     final int AREA_MINIMUM = 150;
-
     //Maximum number of particles to process
     final int MAX_PARTICLES = 8;
-
     AxisCamera camera;          // the axis camera object (connected to the switch)
     CriteriaCollection cc;      // the criteria for doing the particle filter operation
     
@@ -78,6 +73,7 @@ public class  TakePhotoCommand extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        System.out.println("Took Photo");
         TargetReport target = new TargetReport();
 	int verticalTargets[] = new int[MAX_PARTICLES];
 	int horizontalTargets[] = new int[MAX_PARTICLES];
@@ -97,22 +93,18 @@ public class  TakePhotoCommand extends Command {
             //thresholdImage.write("/threshold.bmp");
             BinaryImage filteredImage = thresholdImage.particleFilter(cc);           // filter out small particles
             //filteredImage.write("/filteredImage.bmp");
-
             //iterate through each particle and score to see if it is a target
             Scores scores[] = new Scores[filteredImage.getNumberParticles()];
             horizontalTargetCount = verticalTargetCount = 0;
-
             if(filteredImage.getNumberParticles() > 0)
             {
                     for (int i = 0; i < MAX_PARTICLES && i < filteredImage.getNumberParticles(); i++) {
                     ParticleAnalysisReport report = filteredImage.getParticleAnalysisReport(i);
                     scores[i] = new Scores();
-
                     //Score each particle on rectangularity and aspect ratio
                     scores[i].rectangularity = scoreRectangularity(report);
                     scores[i].aspectRatioVertical = scoreAspectRatio(filteredImage, report, i, true);
                     scores[i].aspectRatioHorizontal = scoreAspectRatio(filteredImage, report, i, false);			
-
                     //Check if the particle is a horizontal target, if not, check if it's a vertical target
                     if(scoreCompare(scores[i], false))
                     {
@@ -127,7 +119,6 @@ public class  TakePhotoCommand extends Command {
                         System.out.println("rect: " + scores[i].rectangularity + "ARHoriz: " + scores[i].aspectRatioHorizontal);
                         System.out.println("ARVert: " + scores[i].aspectRatioVertical);	
                     }
-
                     //Zero out scores and set verticalIndex to first target in case there are no horizontal targets
                     target.totalScore = target.leftScore = target.rightScore = target.tapeWidthScore = target.verticalScore = 0;
                     target.verticalIndex = verticalTargets[0];
@@ -138,12 +129,10 @@ public class  TakePhotoCommand extends Command {
                             {
                                 ParticleAnalysisReport horizontalReport = filteredImage.getParticleAnalysisReport(horizontalTargets[j]);
                                 double horizWidth, horizHeight, vertWidth, leftScore, rightScore, tapeWidthScore, verticalScore, total;
-
                                 //Measure equivalent rectangle sides for use in score calculation
                                 horizWidth = NIVision.MeasureParticle(filteredImage.image, horizontalTargets[j], false, NIVision.MeasurementType.IMAQ_MT_EQUIVALENT_RECT_LONG_SIDE);
                                 vertWidth = NIVision.MeasureParticle(filteredImage.image, verticalTargets[i], false, NIVision.MeasurementType.IMAQ_MT_EQUIVALENT_RECT_SHORT_SIDE);
                                 horizHeight = NIVision.MeasureParticle(filteredImage.image, horizontalTargets[j], false, NIVision.MeasurementType.IMAQ_MT_EQUIVALENT_RECT_SHORT_SIDE);
-
                                 //Determine if the horizontal target is in the expected location to the left of the vertical target
                                 leftScore = ratioToScore(1.2*(verticalReport.boundingRectLeft - horizontalReport.center_mass_x)/horizWidth);
                                 //Determine if the horizontal target is in the expected location to the right of the  vertical target
@@ -154,7 +143,6 @@ public class  TakePhotoCommand extends Command {
                                 verticalScore = ratioToScore(1-(verticalReport.boundingRectTop - horizontalReport.center_mass_y)/(4*horizHeight));
                                 total = leftScore > rightScore ? leftScore:rightScore;
                                 total += tapeWidthScore + verticalScore;
-
                                 //If the target is the best detected so far store the information about it
                                 if(total > target.totalScore)
                                 {
@@ -170,7 +158,6 @@ public class  TakePhotoCommand extends Command {
                             //Determine if the best target is a Hot target
                             target.Hot = hotOrNot(target);
                         }
-
                         if(verticalTargetCount > 0)
                         {
                                 //Information about the target is contained in the "target" structure
@@ -188,7 +175,6 @@ public class  TakePhotoCommand extends Command {
                                 }
                         }
                 }
-
                 /**
                  * all images in Java must be freed after they are used since they are allocated out
                  * of C data structures. Not calling free() will cause the memory to accumulate over
@@ -206,7 +192,7 @@ public class  TakePhotoCommand extends Command {
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
     // Called once after isFinished returns true
     protected void end() {
@@ -228,13 +214,11 @@ public class  TakePhotoCommand extends Command {
     double computeDistance (BinaryImage image, ParticleAnalysisReport report, int particleNumber) throws NIVisionException {
             double rectLong, height;
             int targetHeight;
-
             rectLong = NIVision.MeasureParticle(image.image, particleNumber, false, NIVision.MeasurementType.IMAQ_MT_EQUIVALENT_RECT_LONG_SIDE);
             //using the smaller of the estimated rectangle long side and the bounding rectangle height results in better performance
             //on skewed rectangles
             height = Math.min(report.boundingRectHeight, rectLong);
             targetHeight = 32;
-
             return Y_IMAGE_RES * targetHeight / (height * 12 * 2 * Math.tan(VIEW_ANGLE*Math.PI/(180*2)));
     }
     
@@ -252,7 +236,6 @@ public class  TakePhotoCommand extends Command {
     public double scoreAspectRatio(BinaryImage image, ParticleAnalysisReport report, int particleNumber, boolean vertical) throws NIVisionException
     {
         double rectLong, rectShort, aspectRatio, idealAspectRatio;
-
         rectLong = NIVision.MeasureParticle(image.image, particleNumber, false, NIVision.MeasurementType.IMAQ_MT_EQUIVALENT_RECT_LONG_SIDE);
         rectShort = NIVision.MeasureParticle(image.image, particleNumber, false, NIVision.MeasurementType.IMAQ_MT_EQUIVALENT_RECT_SHORT_SIDE);
         idealAspectRatio = vertical ? (4.0/32) : (23.5/4);	//Vertical reflector 4" wide x 32" tall, horizontal 23.5" wide x 4" tall
@@ -278,14 +261,12 @@ public class  TakePhotoCommand extends Command {
      */
     boolean scoreCompare(Scores scores, boolean vertical){
 	boolean isTarget = true;
-
 	isTarget &= scores.rectangularity > RECTANGULARITY_LIMIT;
 	if(vertical){
             isTarget &= scores.aspectRatioVertical > ASPECT_RATIO_LIMIT;
 	} else {
             isTarget &= scores.aspectRatioHorizontal > ASPECT_RATIO_LIMIT;
 	}
-
 	return isTarget;
     }
     
