@@ -39,7 +39,7 @@ public class ToggleAssistedCatchCommand extends CommandGroup {
             AssistedCatchCommand.enabled = false;
         }else{
             AssistedCatchCommand.enabled = true;
-            addSequential(new AssistedCatchCommand());
+            addParallel(new AssistedCatchCommand());
         }
     }
 }
