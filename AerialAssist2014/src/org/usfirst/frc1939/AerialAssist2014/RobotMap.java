@@ -40,10 +40,10 @@ public class RobotMap {
         drivetrainleftFront = new Talon(1, 1);
 	LiveWindow.addActuator("Drivetrain", "leftFront", (Talon) drivetrainleftFront);
         
-        drivetrainleftRear = new Talon(1, 2);
+        drivetrainleftRear = new Talon(1, 3);
 	LiveWindow.addActuator("Drivetrain", "leftRear", (Talon) drivetrainleftRear);
         
-        drivetrainrightFront = new Talon(1, 3);
+        drivetrainrightFront = new Talon(1, 2);
 	LiveWindow.addActuator("Drivetrain", "rightFront", (Talon) drivetrainrightFront);
         
         drivetrainrightRear = new Talon(1, 4);

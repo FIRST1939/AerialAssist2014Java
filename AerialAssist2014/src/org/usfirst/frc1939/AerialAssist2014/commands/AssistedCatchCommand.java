@@ -17,7 +17,7 @@ import org.usfirst.frc1939.AerialAssist2014.subsystems.Ultrasonic;
 public class  AssistedCatchCommand extends Command {
     
     public static boolean enabled = false;
-    private Ultrasonic ultrasonic;
+    private final Ultrasonic ultrasonic;
     
     public AssistedCatchCommand() {
         // Use requires() here to declare subsystem dependencies
