@@ -212,7 +212,7 @@ Children:
           default: '1'
           name: Input Channel (Digital)
           validators: [DigitalChannel]
-          value: '2'
+          value: '10'
         Input Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
           choices: ['1', '2']
           default: '1'
@@ -253,6 +253,28 @@ Children:
           name: Reverse Channel (Solenoid)
           validators: [Solenoid]
           value: '2'
+    - Name: motor
+      Base: Speed Controller
+      Children: []
+      Properties:
+        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id001
+          default: '1'
+          name: Output Module (Digital)
+          validators: *id002
+          value: '1'
+        Type: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id003
+          default: Victor
+          name: Type
+          validators: null
+          value: Talon
+        Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id004
+          default: '1'
+          name: Output Channel (PWM)
+          validators: *id005
+          value: '5'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: None}
