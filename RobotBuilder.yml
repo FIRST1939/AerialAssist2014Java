@@ -229,7 +229,7 @@ Children:
           default: '1'
           name: Input Channel (Digital)
           validators: [DigitalChannel]
-          value: '10'
+          value: '12'
         Input Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
           choices: ['1', '2']
           default: '1'
@@ -251,7 +251,7 @@ Children:
           default: '1'
           name: Forward Channel (Solenoid)
           validators: [Solenoid]
-          value: '1'
+          value: '3'
         Forward Module (Solenoid): !!robotbuilder.data.properties.ChoicesProperty
           choices: ['1', '2']
           default: '1'
@@ -269,7 +269,7 @@ Children:
           default: '1'
           name: Reverse Channel (Solenoid)
           validators: [Solenoid]
-          value: '2'
+          value: '4'
     - Name: motor
       Base: Speed Controller
       Children: []
@@ -326,7 +326,7 @@ Children:
           default: '1'
           name: Pressure Switch Channel (Digital)
           validators: [DigitalChannel]
-          value: '11'
+          value: '10'
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: CompressorCommand}
