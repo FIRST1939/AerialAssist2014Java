@@ -38,14 +38,14 @@ public class Arm extends Subsystem {
     }
     
     public void extend(){
-        //solenoid.set(DoubleSolenoid.Value.kForward);
-        relay.set(Relay.Value.kForward);
+        solenoid.set(DoubleSolenoid.Value.kForward);
+        //relay.set(Relay.Value.kForward);
         System.out.println("Extend");
     }
     
     public void retract(){
-        //solenoid.set(DoubleSolenoid.Value.kReverse);
-        relay.set(Relay.Value.kReverse);
+        solenoid.set(DoubleSolenoid.Value.kReverse);
+        //relay.set(Relay.Value.kReverse);
         System.out.println("Retract");
     }
     

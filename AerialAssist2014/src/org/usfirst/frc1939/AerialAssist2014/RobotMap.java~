@@ -75,16 +75,16 @@ public class RobotMap {
         ultrasonicoutput = new DigitalOutput(1, 9);
 	
         
-        photoswitchfront = new DigitalInput(1, 10);
+        photoswitchfront = new DigitalInput(1, 12);
 	LiveWindow.addSensor("Photoswitch", "front", photoswitchfront);
         
-        armsolenoid = new DoubleSolenoid(1, 1, 2);      
+        armsolenoid = new DoubleSolenoid(1, 3, 4);      
 	
         
         armmotor = new Talon(1, 5);
 	LiveWindow.addActuator("Arm", "motor", (Talon) armmotor);
         
-        compressor1compressor = new Compressor(1, 11, 1, 1);
+        compressor1compressor = new Compressor(1, 10, 1, 1);
 	
         
         wallsmotor = new Talon(1, 6);

@@ -85,8 +85,8 @@ public class OI {
         rollersIn.toggleWhenPressed(new RollersInCommand());
         rollersOut = new JoystickButton(rotateStick, 2);
         rollersOut.toggleWhenPressed(new RollersOutCommand());
-        //toggleAssistedCatch = new JoystickButton(moveStick, 3);
-        //toggleArmMotor.toggleWhenPressed(new AssistedCatchCommand());
+        toggleAssistedCatch = new JoystickButton(moveStick, 3);
+        toggleAssistedCatch.toggleWhenPressed(new AssistedCatchCommand());
         
         drivetrainTurbo = new JoystickButton(moveStick, 1);
     }
