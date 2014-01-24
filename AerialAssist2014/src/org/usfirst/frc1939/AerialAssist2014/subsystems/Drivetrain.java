@@ -36,7 +36,17 @@ public class Drivetrain extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
+    /*
+    Drive off joysticks
+    */
     public void mecanumDrive(double divisor){
         RobotMap.drivetrainRobotDrive.mecanumDrive_Cartesian(Robot.oi.moveStick.getX()/divisor, Robot.oi.moveStick.getY()/divisor, Robot.oi.rotateStick.getX()/divisor, 0.0);
+    }
+    
+    /*
+    Drive based off of x, y, and z powers
+    */
+    public void mecanumDriveXYZ(double x, double y, double z){
+        RobotMap.drivetrainRobotDrive.mecanumDrive_Cartesian(x, y, z, 0.0);
     }
 }

@@ -38,18 +38,18 @@ public class Ultrasonic extends Subsystem {
         output.set(true);
         timer.delay(0.005);
         output.set(false);
-        timer.delay(0.04);
+        timer.delay(0.05);
     }
     
     public int getRight(){
-        return right.getValue();
+        return right.getValue()/2;
     }
     
     public int getLeft(){
-        return left.getValue();
+        return left.getValue()/2;
     }
     
     public int getFront(){
-        return front.getValue();
+        return front.getValue()/2;
     }
 }
