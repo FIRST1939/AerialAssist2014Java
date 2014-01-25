@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/joeyholliday/Documents/GitHub/AerialAssist2014Java/AerialAssist2014/src/org/usfirst/frc1939/AerialAssist2014/subsystems/Ultrasonic.java</file>
-            <file>file:/Users/joeyholliday/Documents/GitHub/AerialAssist2014Java/AerialAssist2014/src/org/usfirst/frc1939/AerialAssist2014/commands/DriveWithJoyStickCommand.java</file>
-            <file>file:/Users/joeyholliday/Documents/GitHub/AerialAssist2014Java/AerialAssist2014/src/org/usfirst/frc1939/AerialAssist2014/subsystems/Drivetrain.java</file>
+            <file>file:/Users/joeyholliday/Documents/GitHub/AerialAssist2014Java/AerialAssist2014/src/org/usfirst/frc1939/AerialAssist2014/commands/PhotoswitchTestCommand.java</file>
+            <file>file:/Users/joeyholliday/Documents/GitHub/AerialAssist2014Java/AerialAssist2014/src/org/usfirst/frc1939/AerialAssist2014/RobotMap.java</file>
+            <file>file:/Users/joeyholliday/Documents/GitHub/AerialAssist2014Java/AerialAssist2014/src/org/usfirst/frc1939/AerialAssist2014/subsystems/Photoswitch.java</file>
             <file>file:/Users/joeyholliday/Documents/GitHub/AerialAssist2014Java/AerialAssist2014/src/org/usfirst/frc1939/AerialAssist2014/OI.java</file>
-            <file>file:/Users/joeyholliday/Documents/GitHub/AerialAssist2014Java/AerialAssist2014/src/org/usfirst/frc1939/AerialAssist2014/commands/AssistedCatchCommand.java</file>
         </group>
     </open-files>
 </project-private>
