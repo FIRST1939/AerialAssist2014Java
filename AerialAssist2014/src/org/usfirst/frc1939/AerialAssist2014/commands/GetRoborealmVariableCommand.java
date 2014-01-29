@@ -31,15 +31,16 @@ public class  GetRoborealmVariableCommand extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        NetworkTable server = NetworkTable.getTable("SmartDashboard");
+        NetworkTable server = NetworkTable.getTable("Camera");
 	try
 	{
 		final NumberArray targetNum = new NumberArray();
-		server.retrieveValue("BOUNDING_COORDINATES", targetNum);
+		server.retrieveValue("BFR_COORDINATES", targetNum);
 		System.out.println(targetNum.size());
 	}
 	catch (TableKeyNotDefinedException exp)
 	{
+            System.out.println("Error");
 	}
     }
     // Make this return true when this Command no longer needs to run execute()
