@@ -36,7 +36,7 @@ public class  DriveWithJoyStickCommand extends Command {
             Robot.drivetrain.mecanumDrive(1);
         }else{
             //Half speed
-            Robot.drivetrain.mecanumDrive(2);
+            Robot.drivetrain.mecanumDrive(0.5);
         }
     }
     // Make this return true when this Command no longer needs to run execute()

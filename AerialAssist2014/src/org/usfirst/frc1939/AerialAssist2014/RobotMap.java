@@ -11,9 +11,12 @@ package org.usfirst.frc1939.AerialAssist2014;
     
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
@@ -31,6 +34,10 @@ public class RobotMap {
     public static SpeedController drivetrainrightFront;
     public static SpeedController drivetrainrightRear;
     public static RobotDrive drivetrainRobotDrive;
+    public static Encoder drivetrainleftRearEncoder;
+    public static Encoder drivetrainleftFrontEncoder;
+    public static Encoder drivetrainrightFrontEncoder;
+    public static Encoder drivetrainrightRearEncoder;
     public static AnalogChannel ultrasonicright;
     public static AnalogChannel ultrasonicleft;
     public static AnalogChannel ultrasonicfront;
@@ -64,16 +71,36 @@ public class RobotMap {
         drivetrainRobotDrive.setExpiration(0.1);
         drivetrainRobotDrive.setSensitivity(0.5);
         drivetrainRobotDrive.setMaxOutput(1.0);
-        ultrasonicright = new AnalogChannel(1, 2);
+        drivetrainleftRearEncoder = new Encoder(1, 3, 1, 4, false, EncodingType.k4X);
+	LiveWindow.addSensor("Drivetrain", "leftRearEncoder", drivetrainleftRearEncoder);
+        drivetrainleftRearEncoder.setDistancePerPulse(1.0);
+        drivetrainleftRearEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
+        drivetrainleftRearEncoder.start();
+        drivetrainleftFrontEncoder = new Encoder(1, 1, 1, 2, false, EncodingType.k4X);
+	LiveWindow.addSensor("Drivetrain", "leftFrontEncoder", drivetrainleftFrontEncoder);
+        drivetrainleftFrontEncoder.setDistancePerPulse(1.0);
+        drivetrainleftFrontEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
+        drivetrainleftFrontEncoder.start();
+        drivetrainrightFrontEncoder = new Encoder(1, 5, 1, 6, true, EncodingType.k4X);
+	LiveWindow.addSensor("Drivetrain", "rightFrontEncoder", drivetrainrightFrontEncoder);
+        drivetrainrightFrontEncoder.setDistancePerPulse(1.0);
+        drivetrainrightFrontEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
+        drivetrainrightFrontEncoder.start();
+        drivetrainrightRearEncoder = new Encoder(1, 7, 1, 8, true, EncodingType.k4X);
+	LiveWindow.addSensor("Drivetrain", "rightRearEncoder", drivetrainrightRearEncoder);
+        drivetrainrightRearEncoder.setDistancePerPulse(1.0);
+        drivetrainrightRearEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
+        drivetrainrightRearEncoder.start();
+        ultrasonicright = new AnalogChannel(1, 1);
 	LiveWindow.addSensor("Ultrasonic", "right", ultrasonicright);
         
-        ultrasonicleft = new AnalogChannel(1, 3);
+        ultrasonicleft = new AnalogChannel(1, 2);
 	LiveWindow.addSensor("Ultrasonic", "left", ultrasonicleft);
         
-        ultrasonicfront = new AnalogChannel(1, 1);
+        ultrasonicfront = new AnalogChannel(1, 3);
 	LiveWindow.addSensor("Ultrasonic", "front", ultrasonicfront);
         
-        ultrasonicoutput = new DigitalOutput(1, 13);
+        ultrasonicoutput = new DigitalOutput(1, 9);
 	
         
         photoswitchfront = new DigitalInput(1, 12);

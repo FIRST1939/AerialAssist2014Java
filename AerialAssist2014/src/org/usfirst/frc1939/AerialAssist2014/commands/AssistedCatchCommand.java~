@@ -19,9 +19,9 @@ public class  AssistedCatchCommand extends Command {
     
     private final Ultrasonic ultrasonic;
     public static final int ignoreDistance = 120;
-    public static final int margin = 5;
-    public static final double turnSpeed = 0.3;
-    public static final double strafeSpeed = 0.5;
+    public static final int margin = 3;
+    public static final double turnSpeed = 1.0;
+    public static final double strafeSpeed = 1.0;
     
     public AssistedCatchCommand() {
         // Use requires() here to declare subsystem dependencies
@@ -46,7 +46,7 @@ public class  AssistedCatchCommand extends Command {
         System.out.println("Right: " + right);
         System.out.println("Left: " + left);
         //Check For Ball
-        if(right<ignoreDistance && left<ignoreDistance){ 
+        //if(right<ignoreDistance && left<ignoreDistance){ 
             //Sees ball in one sensor but not the other
             if(right<ignoreDistance && left>ignoreDistance){
                 //Sees ball on right side but not left
@@ -79,9 +79,9 @@ public class  AssistedCatchCommand extends Command {
                     Robot.drivetrain.mecanumDriveXYZ(strafeSpeed,0,0);
                 }
             }
-        }else{
-            Robot.drivetrain.mecanumDriveXYZ(0, 0, 0);
-        }
+        //}else{
+        //    Robot.drivetrain.mecanumDriveXYZ(0, 0, 0);
+        //}
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
