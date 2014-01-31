@@ -73,6 +73,7 @@ public class Robot extends IterativeRobot {
         //Auto Chooser
         autoChooser = new SendableChooser();
         autoChooser.addDefault("Default", new DefaultAutonomousCommand());
+        autoChooser.addObject("Shoot On Target", new ShootOnTargetTestCommand());
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
     }
     public void autonomousInit() {

@@ -18,10 +18,11 @@ import org.usfirst.frc1939.AerialAssist2014.subsystems.Ultrasonic;
 public class  AssistedCatchCommand extends Command {
     
     private final Ultrasonic ultrasonic;
-    public static final int ignoreDistance = 120;
+    public static final int ignoreDistance = 30;
     public static final int margin = 3;
-    public static final double turnSpeed = 1.0;
+    public static final double turnSpeed = 0.5;
     public static final double strafeSpeed = 1.0;
+    public static final boolean turn = false;
     
     public AssistedCatchCommand() {
         // Use requires() here to declare subsystem dependencies
@@ -48,11 +49,11 @@ public class  AssistedCatchCommand extends Command {
         //Check For Ball
         //if(right<ignoreDistance && left<ignoreDistance){ 
             //Sees ball in one sensor but not the other
-            if(right<ignoreDistance && left>ignoreDistance){
+            if(right<ignoreDistance && left>ignoreDistance && turn){
                 //Sees ball on right side but not left
                 //Turn right
                 Robot.drivetrain.mecanumDriveXYZ(0, 0, turnSpeed);
-            }else if(left<ignoreDistance && right>ignoreDistance){
+            }else if(left<ignoreDistance && right>ignoreDistance && turn){
                 //Sees ball on left side but not right
                 //Turn left
                 Robot.drivetrain.mecanumDriveXYZ(0, 0, -turnSpeed);
