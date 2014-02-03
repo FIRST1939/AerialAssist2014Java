@@ -28,3 +28,4 @@ build/
 *.DS_Store
 *.lock
 AerialAssist2014/nbproject/private/private.xml
+*.bak.*
