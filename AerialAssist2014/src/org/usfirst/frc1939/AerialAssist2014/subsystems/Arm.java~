@@ -62,4 +62,8 @@ public class Arm extends Subsystem {
     public void rollersStop(){
         motor.set(0.0);
     }
+    
+    public void setRollersSpeed(double speed){
+        motor.set(speed);
+    }
 }
