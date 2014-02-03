@@ -728,12 +728,6 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: Arm}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
-  - Name: DefaultAutonomousCommand
-    Base: Command Group
-    Children: []
-    Properties:
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: false}
   - Name: RollersOutCommand
     Base: Command
     Children: []
@@ -766,10 +760,18 @@ Children:
         name: Requires, type: Subsystem, validators: null, value: Drivetrain}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: true}
+  - Name: CommandBasedAutonomous
+    Base: Command
+    Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
   Properties: {}
 Properties:
   Autonomous Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-    name: Autonomous Command, type: Command, validators: null, value: DefaultAutonomousCommand}
+    name: Autonomous Command, type: Command, validators: null, value: CommandBasedAutonomous}
   Wiring File: !!robotbuilder.data.properties.FileProperty {default: '', extension: html,
     folder: false, name: Wiring File, validators: null, value: ''}
   C++ Windriver Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Windriver\workspace',
