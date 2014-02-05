@@ -32,6 +32,7 @@ public class Catapult extends Subsystem {
     
     public void shoot(){
         solenoid.set(DoubleSolenoid.Value.kForward);
+        this.reload();
     }
     
     public void reload(){

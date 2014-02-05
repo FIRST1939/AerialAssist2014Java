@@ -24,6 +24,8 @@ import javax.microedition.io.Connector;
  */
 public class CommandBasedAutonomousGroup extends CommandGroup {
     
+    public static final String fileLocation = "";
+    
     public  CommandBasedAutonomousGroup() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
@@ -43,7 +45,7 @@ public class CommandBasedAutonomousGroup extends CommandGroup {
         // arm.
         
         try {
-            FileConnection fc = (FileConnection)Connector.open("file:///output.txt", Connector.WRITE);
+            FileConnection fc = (FileConnection)Connector.open(fileLocation, Connector.READ);
             BufferedReader buf = new BufferedReader(new InputStreamReader(fc.openInputStream()));
             
             String line = "";
