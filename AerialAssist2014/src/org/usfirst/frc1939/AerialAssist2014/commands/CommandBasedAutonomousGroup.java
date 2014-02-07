@@ -45,12 +45,21 @@ public class CommandBasedAutonomousGroup extends CommandGroup {
         // arm.
         
         try {
+            //Intialize file reader
             FileConnection fc = (FileConnection)Connector.open(fileLocation, Connector.READ);
             BufferedReader buf = new BufferedReader(new InputStreamReader(fc.openInputStream()));
             
+            //Intialize line variable
             String line = "";
+            
+            //Intialize group variables
+            CommandGroup group = null;
+            boolean groupParallel = false;
+            
+            //Read each line of file
             while((line = buf.readLine()) != null){
                 boolean parallel;
+                boolean noCommand = false;
                 String[] a = splitString(line);
                 if(a.length==0){
                     System.out.println("String splitter returned an empty array");
@@ -90,12 +99,31 @@ public class CommandBasedAutonomousGroup extends CommandGroup {
                         command = new AutonomousArmCommand(args);
                     }else if(keyword.equalsIgnoreCase("wait")){
                         command = new AutonomousWaitCommand(args);
+                    }else if(keyword.equalsIgnoreCase("group")){
+                        noCommand = true;
+                        group = new CommandGroup();
+                        groupParallel = parallel;
+                    }else if(keyword.equalsIgnoreCase("end")){
+                        noCommand = true;
+                        if(groupParallel){
+                            addParallel(group);
+                        }else{
+                            addSequential(group);
+                        }
+                        group = null;
                     }
                     
-                    if(command == null){
+                    if(noCommand){
+                        //Catch keywords that don't set commands
+                    }else if(group != null && command != null){
+                        if(parallel){
+                            group.addParallel(command);
+                        }else{
+                            group.addSequential(command);
+                        }
+                    }else if(command == null){
                         System.out.println("Invalid command: '" + keyword + "'");
                     }else{
-                        System.out.println("Command Based Autonomous: Added "  + keyword);
                         if(parallel){
                             addParallel(command);
                         }else{
@@ -106,12 +134,13 @@ public class CommandBasedAutonomousGroup extends CommandGroup {
                 
             }
             fc.close();
-        } catch (Exception e) { 
-            System.out.println("Exception");
-            e.printStackTrace();
+        } catch (IOException e) {
         }
     }
     
+    /*
+    Method for seperating words in String.
+    */
     private String[] splitString(String s){
         StringTokenizer t = new StringTokenizer(s, " ");
         String[] a = new String[t.countTokens()];
