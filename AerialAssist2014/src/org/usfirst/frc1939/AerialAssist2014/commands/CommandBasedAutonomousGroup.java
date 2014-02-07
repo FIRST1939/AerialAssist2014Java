@@ -99,6 +99,8 @@ public class CommandBasedAutonomousGroup extends CommandGroup {
                         command = new AutonomousArmCommand(args);
                     }else if(keyword.equalsIgnoreCase("wait")){
                         command = new AutonomousWaitCommand(args);
+                    }else if(keyword.equalsIgnoreCase("wall") || keyword.equalsIgnoreCase("walls")){
+                        command = new AutonomousWallsCommand(args);
                     }else if(keyword.equalsIgnoreCase("group")){
                         noCommand = true;
                         group = new CommandGroup();
