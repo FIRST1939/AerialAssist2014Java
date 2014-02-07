@@ -24,7 +24,7 @@ import javax.microedition.io.Connector;
  */
 public class CommandBasedAutonomousGroup extends CommandGroup {
     
-    public static final String fileLocation = "";
+    public static final String fileLocation = "file:///autonomous.txt";
     
     public  CommandBasedAutonomousGroup() {
         // Add Commands here:
@@ -95,6 +95,7 @@ public class CommandBasedAutonomousGroup extends CommandGroup {
                     if(command == null){
                         System.out.println("Invalid command: '" + keyword + "'");
                     }else{
+                        System.out.println("Command Based Autonomous: Added "  + keyword);
                         if(parallel){
                             addParallel(command);
                         }else{
@@ -105,8 +106,9 @@ public class CommandBasedAutonomousGroup extends CommandGroup {
                 
             }
             fc.close();
-        } catch (IOException e) { 
-            System.out.println("Couldn't Read File!");
+        } catch (Exception e) { 
+            System.out.println("Exception");
+            e.printStackTrace();
         }
     }
     

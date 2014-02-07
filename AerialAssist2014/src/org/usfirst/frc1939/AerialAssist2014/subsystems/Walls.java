@@ -34,17 +34,11 @@ public class Walls extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void extend(){
-        while(!out.get()){
-            motor.set(speed);
-        }
-        motor.set(0);
+    public void in(){
+        new WallsInCommand().start();
     }
     
-    public void retract(){
-        while(!in.get()){
-            motor.set(-speed);
-        }
-        motor.set(0);
+    public void out(){
+        new WallsOutCommand().start();
     }
 }

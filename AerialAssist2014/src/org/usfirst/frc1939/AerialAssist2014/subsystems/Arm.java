@@ -50,13 +50,11 @@ public class Arm extends Subsystem {
     }
     
     public void rollersIn(){
-        timer.delay(0.5);
-        motor.set(1.0);
+        motor.set(-1.0);
     }
     
     public void rollersOut(){
-        timer.delay(0.5);
-        motor.set(-1.0);
+        motor.set(1.0);
     }
     
     public void rollersStop(){
