@@ -8,12 +8,15 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 package org.usfirst.frc1939.AerialAssist2014;
+import com.sun.squawk.microedition.io.FileConnection;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import java.io.IOException;
+import javax.microedition.io.Connector;
 import org.usfirst.frc1939.AerialAssist2014.commands.*;
 import org.usfirst.frc1939.AerialAssist2014.subsystems.*;
 /**
@@ -71,8 +74,19 @@ public class Robot extends IterativeRobot {
         
         //Auto Chooser
         autoChooser = new SendableChooser();
-        autoChooser.addDefault("Command Based", new ShootOnTargetTestCommand());
-        autoChooser.addObject("Shoot On Target", new CommandBasedAutonomousGroup());
+        
+        autoChooser.addDefault("Command Based: Default", new CommandBasedAutonomousGroup("file:///autonomous.txt"));
+        try{
+            for(int i = 1;i<8;i++){
+                String location = "file:///autonomous" + i + ".txt";
+                FileConnection fc = (FileConnection)Connector.open(location, Connector.READ);
+                if(fc.exists()){
+                    autoChooser.addObject("Command Based: " + i, new CommandBasedAutonomousGroup(location));
+                }
+            }
+        }catch (IOException e){
+        }
+        //autoChooser.addObject("Shoot On Target Test", new ShootOnTargetTestCommand());
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
     }
     public void autonomousInit() {

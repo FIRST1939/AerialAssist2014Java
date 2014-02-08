@@ -24,9 +24,9 @@ import javax.microedition.io.Connector;
  */
 public class CommandBasedAutonomousGroup extends CommandGroup {
     
-    public static final String fileLocation = "file:///autonomous.txt";
+    //public static final String fileLocation = "file:///autonomous.txt";
     
-    public  CommandBasedAutonomousGroup() {
+    public  CommandBasedAutonomousGroup(String fileLocation) {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -85,7 +85,10 @@ public class CommandBasedAutonomousGroup extends CommandGroup {
                     
                     Command command = null;
                     
-                    if(keyword.equalsIgnoreCase("drive")){
+                    if (keyword.substring(0, 1).equalsIgnoreCase("#")){
+                        //Comment syntax
+                        noCommand = true;
+                    }else if(keyword.equalsIgnoreCase("drive")){
                         command = new AutonomousDriveCommand(args);
                     }else if(keyword.equalsIgnoreCase("turn")){
                         command = new AutonomousTurnCommand(Integer.parseInt(args[0]));
