@@ -38,6 +38,7 @@ public class  DriveWithJoyStickCommand extends Command {
         System.out.println("X: " + Robot.drivetrain.getXDistance());
         System.out.println("Y: " + Robot.drivetrain.getYDistance());
         System.out.println("Distance: " + Robot.drivetrain.getDistance());
+        System.out.println("Degrees: " + Robot.drivetrain.getDegrees());
         if(Robot.oi.drivetrainTurbo.get()){
             //Turbo, Full speed
             Robot.drivetrain.mecanumDrive(1);

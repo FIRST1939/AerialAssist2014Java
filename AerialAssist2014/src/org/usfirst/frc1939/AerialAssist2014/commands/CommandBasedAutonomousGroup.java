@@ -88,7 +88,7 @@ public class CommandBasedAutonomousGroup extends CommandGroup {
                     if(keyword.equalsIgnoreCase("drive")){
                         command = new AutonomousDriveCommand(args);
                     }else if(keyword.equalsIgnoreCase("turn")){
-                        command = new AutonomousTurnCommand(args);
+                        command = new AutonomousTurnCommand(Integer.parseInt(args[0]));
                     }else if(keyword.equalsIgnoreCase("target")){
                         command = new AutonomousTargetCommand(args);
                     }else if(keyword.equalsIgnoreCase("shoot")){
