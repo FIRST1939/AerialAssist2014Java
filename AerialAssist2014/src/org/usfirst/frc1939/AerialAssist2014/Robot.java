@@ -77,11 +77,13 @@ public class Robot extends IterativeRobot {
         
         autoChooser.addDefault("Command Based: Default", new CommandBasedAutonomousGroup("file:///autonomous.txt"));
         try{
-            for(int i = 1;i<8;i++){
+            for(int i = 1;i<100;i++){
                 String location = "file:///autonomous" + i + ".txt";
                 FileConnection fc = (FileConnection)Connector.open(location, Connector.READ);
                 if(fc.exists()){
                     autoChooser.addObject("Command Based: " + i, new CommandBasedAutonomousGroup(location));
+                }else{
+                    i = 101;
                 }
             }
         }catch (IOException e){

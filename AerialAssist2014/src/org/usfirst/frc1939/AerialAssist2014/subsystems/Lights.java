@@ -46,5 +46,4 @@ public class Lights extends Subsystem {
             spike2.set(Relay.Value.kOn);
         }
     }
-
 }

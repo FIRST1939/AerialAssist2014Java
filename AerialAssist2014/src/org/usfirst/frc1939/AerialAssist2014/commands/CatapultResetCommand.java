@@ -8,6 +8,7 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 package org.usfirst.frc1939.AerialAssist2014.commands;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc1939.AerialAssist2014.Robot;
 import org.usfirst.frc1939.AerialAssist2014.RobotMap;
@@ -35,8 +36,8 @@ public class  CatapultResetCommand extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
-        RobotMap.catapultright.set(false);
-        RobotMap.catapultleft.set(false);
+        RobotMap.catapultright.set(DoubleSolenoid.Value.kOff);
+        RobotMap.catapultleft.set(DoubleSolenoid.Value.kOff);
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
