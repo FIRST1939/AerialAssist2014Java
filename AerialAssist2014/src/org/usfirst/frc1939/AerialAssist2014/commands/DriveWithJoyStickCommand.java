@@ -31,6 +31,13 @@ public class  DriveWithJoyStickCommand extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        System.out.println("Left Front: " + RobotMap.drivetrainleftFrontEncoder.get());
+        System.out.println("Left Rear: " + RobotMap.drivetrainleftRearEncoder.get());
+        System.out.println("Right Front: " + RobotMap.drivetrainrightFrontEncoder.get());
+        System.out.println("Right Rear: " + RobotMap.drivetrainrightRearEncoder.get());
+        System.out.println("X: " + Robot.drivetrain.getXDistance());
+        System.out.println("Y: " + Robot.drivetrain.getYDistance());
+        System.out.println("Distance: " + Robot.drivetrain.getDistance());
         if(Robot.oi.drivetrainTurbo.get()){
             //Turbo, Full speed
             Robot.drivetrain.mecanumDrive(1);
