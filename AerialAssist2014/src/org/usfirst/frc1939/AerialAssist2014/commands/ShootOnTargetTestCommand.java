@@ -50,9 +50,9 @@ public class  ShootOnTargetTestCommand extends Command {
             count = 0;
         }
         if(count > 10){
-            Robot.arm.extend();
+            Robot.arm.out();
             timer.delay(2);
-            Robot.arm.retract();
+            Robot.arm.in();
         }
     }
     // Make this return true when this Command no longer needs to run execute()

@@ -9,11 +9,15 @@
 // it from being updated in the future.
 package org.usfirst.frc1939.AerialAssist2014.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import org.usfirst.frc1939.AerialAssist2014.Robot;
 /**
  *
  */
 public class  AutonomousShootCommand extends Command {
+    
+    CommandGroup command;
+    
     public AutonomousShootCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -24,14 +28,14 @@ public class  AutonomousShootCommand extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        Robot.catapult.shoot();
+        command = Robot.catapult.shoot();
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return !command.isRunning();
     }
     // Called once after isFinished returns true
     protected void end() {

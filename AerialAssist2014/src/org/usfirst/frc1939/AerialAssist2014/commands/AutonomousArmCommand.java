@@ -26,10 +26,10 @@ public class  AutonomousArmCommand extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        if(position.equalsIgnoreCase("up")){
-            Robot.arm.retract();
-        }else if(position.equalsIgnoreCase("down")){
-            Robot.arm.extend();
+        if(position.equalsIgnoreCase("in")){
+            Robot.arm.in();
+        }else if(position.equalsIgnoreCase("out")){
+            Robot.arm.out();
         }else{
             System.out.println("AutonomousArmCommand given invalid position");
         }
