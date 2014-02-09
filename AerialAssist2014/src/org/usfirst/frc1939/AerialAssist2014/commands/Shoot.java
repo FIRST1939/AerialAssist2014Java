@@ -11,6 +11,8 @@
 
 package org.usfirst.frc1939.AerialAssist2014.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.usfirst.frc1939.AerialAssist2014.Robot;
+import org.usfirst.frc1939.AerialAssist2014.RobotMap;
 
 /**
  *
@@ -34,8 +36,18 @@ public class Shoot extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-        addSequential(new CatapultLoadCommand());
-        addSequential(new CatapultKickCommand());
-        addSequential(new CatapultResetCommand());
+        
+        if(RobotMap.catapultDownLimitSwitch.get()){
+            //Arm Not down
+            System.out.println("Catapult arm not locked in!");
+        }else{
+            if(!Robot.arm.out){
+                this.addSequential(new ArmOut());
+            }
+            this.addSequential(new PressurizeCatapult());
+            this.addSequential(new KickLatch());
+            this.addSequential(new Wait(Robot.catapult.depressurizeDelay));
+            this.addSequential(new DepressurizeCatapult());
+        }
     }
 }
