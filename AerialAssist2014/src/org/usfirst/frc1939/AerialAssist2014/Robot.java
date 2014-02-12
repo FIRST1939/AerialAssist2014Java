@@ -72,7 +72,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData(arm);
         SmartDashboard.putData(walls);
         
-        //Auto Chooser
+        //Auto Chooser; Creates the menu for choosing autonomous mode
         autoChooser = new SendableChooser();
         
         autoChooser.addDefault("Command Based: Default", new CommandBasedAutonomous("file:///autonomous.txt"));

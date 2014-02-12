@@ -47,7 +47,7 @@ public class Catapult extends Subsystem {
     }
     
     public void depressurize(){
-        rightSolenoid.set(DoubleSolenoid.Value.kOff);
-        leftSolenoid.set(DoubleSolenoid.Value.kOff);
+        rightSolenoid.set(DoubleSolenoid.Value.kReverse);
+        leftSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
 }
