@@ -38,7 +38,6 @@ public class Shoot extends CommandGroup {
         // arm.
         
         if(RobotMap.catapultDownLimitSwitch.get()){
-            //Arm Not down
             System.out.println("Catapult arm not locked in!");
         }else{
             if(!Robot.arm.out){

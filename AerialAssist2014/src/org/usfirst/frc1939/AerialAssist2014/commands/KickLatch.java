@@ -16,7 +16,7 @@ import org.usfirst.frc1939.AerialAssist2014.RobotMap;
  */
 public class  KickLatch extends Command {
     
-    private boolean starting;
+    private boolean hit;
     
     public KickLatch() {
         // Use requires() here to declare subsystem dependencies
@@ -28,20 +28,19 @@ public class  KickLatch extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        starting = true;
-        //Delay to get off of limit switch
-        this.setTimeout(Robot.catapult.limitSwitchDelay);
+        hit = false;
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         RobotMap.catapultMotor.set(Robot.catapult.catapultKickSpeed);
-        if(this.isTimedOut()){
-            starting = false;
+        if(!RobotMap.catapultLatchLimitSwitch.get()){
+            hit = true;
         }
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !RobotMap.catapultLatchLimitSwitch.get() && !starting;
+        //Stop motor when it has been hit and released
+        return RobotMap.catapultLatchLimitSwitch.get() && hit;
     }
     // Called once after isFinished returns true
     protected void end() {
