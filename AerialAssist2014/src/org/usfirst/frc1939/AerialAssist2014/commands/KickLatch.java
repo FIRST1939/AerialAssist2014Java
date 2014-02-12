@@ -32,10 +32,11 @@ public class  KickLatch extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        System.out.println("Kicking");
         RobotMap.catapultMotor.set(Robot.catapult.catapultKickSpeed);
-        if(!RobotMap.catapultLatchLimitSwitch.get()){
-            hit = true;
-        }
+        //if(!RobotMap.catapultLatchLimitSwitch.get()){
+        //    hit = true;
+        //}
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
