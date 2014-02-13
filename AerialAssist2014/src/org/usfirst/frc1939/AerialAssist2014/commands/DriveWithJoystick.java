@@ -28,14 +28,14 @@ public class  DriveWithJoystick extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        System.out.println("Left Front: " + RobotMap.drivetrainLeftFrontEncoder.get());
-        System.out.println("Left Back: " + RobotMap.drivetrainLeftBackEncoder.get());
-        System.out.println("Right Front: " + RobotMap.drivetrainRightFrontEncoder.get());
-        System.out.println("Right Back: " + RobotMap.drivetrainRightBackEncoder.get());
-        System.out.println("X: " + Robot.drivetrain.getXDistance());
-        System.out.println("Y: " + Robot.drivetrain.getYDistance());
-        System.out.println("Distance: " + Robot.drivetrain.getDistance());
-        System.out.println("Degrees: " + Robot.drivetrain.getDegrees());
+        //System.out.println("Left Front: " + RobotMap.drivetrainLeftFrontEncoder.get());
+        //System.out.println("Left Back: " + RobotMap.drivetrainLeftBackEncoder.get());
+        //System.out.println("Right Front: " + RobotMap.drivetrainRightFrontEncoder.get());
+        //System.out.println("Right Back: " + RobotMap.drivetrainRightBackEncoder.get());
+        //System.out.println("X: " + Robot.drivetrain.getXDistance());
+        //System.out.println("Y: " + Robot.drivetrain.getYDistance());
+        //System.out.println("Distance: " + Robot.drivetrain.getDistance());
+        //System.out.println("Degrees: " + Robot.drivetrain.getDegrees());
         if(Robot.oi.drivetrainTurbo.get()){
             //Turbo, Full speed
             Robot.drivetrain.drive(1);

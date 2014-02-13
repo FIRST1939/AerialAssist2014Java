@@ -44,6 +44,7 @@ public class Shoot extends CommandGroup {
                 this.addSequential(new DepressurizeCatapult());
             }else{
                 System.out.println("Attempting to fire while arm was in!");
+                this.addSequential(new SetColorForTime(1.5));
             }
     }
 }
