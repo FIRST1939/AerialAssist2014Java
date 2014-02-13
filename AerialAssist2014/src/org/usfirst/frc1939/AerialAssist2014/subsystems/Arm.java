@@ -39,13 +39,13 @@ public class Arm extends Subsystem {
     
     public void in(){
         out = false;
-        rightSolenoid.set(DoubleSolenoid.Value.kForward);
-        leftSolenoid.set(DoubleSolenoid.Value.kForward);
+        rightSolenoid.set(DoubleSolenoid.Value.kReverse);
+        leftSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
     
     public void out(){
         out = true;
-        rightSolenoid.set(DoubleSolenoid.Value.kReverse);
-        leftSolenoid.set(DoubleSolenoid.Value.kReverse);
+        rightSolenoid.set(DoubleSolenoid.Value.kForward);
+        leftSolenoid.set(DoubleSolenoid.Value.kForward);
     }
 }
