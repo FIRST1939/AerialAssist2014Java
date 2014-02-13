@@ -100,6 +100,7 @@ public class Robot extends IterativeRobot {
         }
         //autoChooser.addObject("Shoot On Target Test", new ShootOnTargetTestCommand());
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
+        Robot.lights.setGreen();
     }
     public void autonomousInit() {
         // schedule the autonomous command (example)

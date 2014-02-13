@@ -53,6 +53,7 @@ public class OI {
     public JoystickButton armInButton;
     public JoystickButton armOutButton;
     public JoystickButton kickLatchButton;
+    public JoystickButton shootButton;
     public Joystick moveJoystick;
     public JoystickButton resetEncodersButton;
     public JoystickButton wallsInButton;
@@ -82,6 +83,8 @@ public class OI {
         resetEncodersButton.whenPressed(new ResetEncoders());
         moveJoystick = new Joystick(1);
         
+        shootButton = new JoystickButton(moveJoystick, 8);
+        shootButton.whenPressed(new Shoot());
         kickLatchButton = new JoystickButton(moveJoystick, 9);
         kickLatchButton.whenPressed(new KickLatch());
         armOutButton = new JoystickButton(moveJoystick, 6);

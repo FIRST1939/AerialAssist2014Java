@@ -37,16 +37,13 @@ public class Shoot extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
         
-        if(RobotMap.catapultDownLimitSwitch.get()){
-            System.out.println("Catapult arm not locked in!");
-        }else{
-            if(!Robot.arm.out){
-                this.addSequential(new ArmOut());
+            if(Robot.arm.out){
+                this.addSequential(new PressurizeCatapult());
+                this.addSequential(new KickLatch());
+                this.addSequential(new Wait(Robot.catapult.depressurizeDelay));
+                this.addSequential(new DepressurizeCatapult());
+            }else{
+                System.out.println("Attempting to fire while arm was in!");
             }
-            this.addSequential(new PressurizeCatapult());
-            this.addSequential(new KickLatch());
-            this.addSequential(new Wait(Robot.catapult.depressurizeDelay));
-            this.addSequential(new DepressurizeCatapult());
-        }
     }
 }
