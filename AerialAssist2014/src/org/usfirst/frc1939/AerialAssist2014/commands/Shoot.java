@@ -19,6 +19,8 @@ import org.usfirst.frc1939.AerialAssist2014.RobotMap;
  */
 public class Shoot extends CommandGroup {
     
+
+    
     public  Shoot() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
@@ -36,25 +38,9 @@ public class Shoot extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-        
-        half(false);
-    }
-    
-    public Shoot(boolean half){
-        half(half);
-    }
-    
-    public void half(boolean half){
-        if(!Robot.arm.out){
-            System.out.println("Attempted to fire while arm was in!");
-            this.addSequential(new SetColorForTime(1.5));
-        }else{
-            this.addSequential(new PressurizeCatapult());
-            this.addSequential(new KickLatch());
-            if(!half){
-                this.addSequential(new Wait(Robot.catapult.depressurizeDelay));
-                this.addSequential(new DepressurizeCatapult());
-            }
-        }
+        this.addSequential(new PressurizeCatapult());
+        this.addSequential(new KickLatch());
+        this.addSequential(new Wait(Robot.catapult.depressurizeDelay));
+        this.addSequential(new DepressurizeCatapult());
     }
 }

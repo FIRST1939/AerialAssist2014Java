@@ -73,32 +73,14 @@ public class Robot extends IterativeRobot {
         
         //Smart Dashboard Setup
         SmartDashboard.putData(Scheduler.getInstance());
-        SmartDashboard.putData(arm);
-        SmartDashboard.putData(walls);
         
         //Auto Chooser; Creates the menu for choosing autonomous mode
         autoChooser = new SendableChooser();
         
-        autoChooser.addDefault("Command Based: Default", new CommandBasedAutonomous("file:///autonomous.txt"));
-        try{
-            for(int i = 1;i<100;i++){
-                String location = "file:///autonomous" + i + ".txt";
-                FileConnection fc = (FileConnection)Connector.open(location, Connector.READ);
-                if(fc.exists()){
-                    BufferedReader buf = new BufferedReader(new InputStreamReader(fc.openInputStream()));
-                    String line = buf.readLine();
-                    if(line==null){
-                        autoChooser.addObject("Command Based: " + i, new CommandBasedAutonomous(location));
-                    }else{
-                        autoChooser.addObject(line, new CommandBasedAutonomous(location));
-                    }
-                    fc.close();
-                }else{
-                    fc.close();
-                    i = 101;
-                }
-            }
-        }catch (IOException e){
+        autoChooser.addDefault("Command Based: Default", "file:///autonomous.txt");
+        for(int i = 1;i<7;i++){
+            String location = "file:///autonomous" + i + ".txt";
+            autoChooser.addObject("Command Based: " + i, location);
         }
         //autoChooser.addObject("Shoot On Target Test", new ShootOnTargetTestCommand());
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
@@ -106,7 +88,8 @@ public class Robot extends IterativeRobot {
     }
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        autonomousCommand = (Command) autoChooser.getSelected();
+        String location = (String) autoChooser.getSelected();
+        autonomousCommand = new CommandBasedAutonomous(location);
         if (autonomousCommand != null) autonomousCommand.start();
     }
     /**

@@ -936,30 +936,6 @@ Children:
   - Name: Gamepad
     Base: Joystick
     Children:
-    - Name: ShootHalfButton2
-      Base: Joystick Button
-      Children: []
-      Properties:
-        Command: !!robotbuilder.data.properties.TypeSelectionProperty
-          default: None
-          name: Command
-          type: Command
-          validators: *id032
-          value: ShootHalf
-        Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id033
-          default: '1'
-          name: Button
-          validators: null
-          value: '11'
-        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: Gamepad}
-        When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id034
-          default: whileHeld
-          name: When to Run
-          validators: null
-          value: whenPressed
     - Name: ShootButton2
       Base: Joystick Button
       Children: []
@@ -975,7 +951,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '12'
+          value: '10'
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
           name: Joystick, validators: null, value: Gamepad}
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
@@ -1008,30 +984,6 @@ Children:
           name: When to Run
           validators: null
           value: whenPressed
-    - Name: OpenButton3
-      Base: Joystick Button
-      Children: []
-      Properties:
-        Command: !!robotbuilder.data.properties.TypeSelectionProperty
-          default: None
-          name: Command
-          type: Command
-          validators: *id032
-          value: OpenEverything
-        Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id033
-          default: '1'
-          name: Button
-          validators: null
-          value: '8'
-        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: Gamepad}
-        When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id034
-          default: whileHeld
-          name: When to Run
-          validators: null
-          value: whenPressed
     - Name: CloseButton2
       Base: Joystick Button
       Children: []
@@ -1056,30 +1008,6 @@ Children:
           name: When to Run
           validators: null
           value: whenPressed
-    - Name: CloseButton3
-      Base: Joystick Button
-      Children: []
-      Properties:
-        Command: !!robotbuilder.data.properties.TypeSelectionProperty
-          default: None
-          name: Command
-          type: Command
-          validators: *id032
-          value: CloseEverything
-        Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id033
-          default: '1'
-          name: Button
-          validators: null
-          value: '7'
-        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: Gamepad}
-        When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id034
-          default: whileHeld
-          name: When to Run
-          validators: null
-          value: whenPressed
     - Name: ArmInButton2
       Base: Joystick Button
       Children: []
@@ -1095,7 +1023,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '2'
+          value: '1'
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
           name: Joystick, validators: null, value: Gamepad}
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
@@ -1119,7 +1047,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '1'
+          value: '3'
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
           name: Joystick, validators: null, value: Gamepad}
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
@@ -1143,7 +1071,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '9'
+          value: '7'
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
           name: Joystick, validators: null, value: Gamepad}
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
@@ -1167,7 +1095,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '10'
+          value: '8'
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
           name: Joystick, validators: null, value: Gamepad}
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
@@ -1361,6 +1289,22 @@ Children:
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Catapult}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+  - Name: MapButton
+    Base: Command
+    Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+  - Name: DriveForward
+    Base: Command
+    Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Drivetrain}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
   Properties: {}

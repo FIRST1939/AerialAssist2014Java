@@ -24,8 +24,13 @@ public class  PressurizeCatapult extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        Robot.catapult.pressurize();
-        this.setTimeout(Robot.catapult.pressurizeDelay);
+        if(Robot.arm.out){
+            Robot.catapult.pressurize();
+            this.setTimeout(Robot.catapult.pressurizeDelay);
+        }else{
+            this.setTimeout(0.1);
+            new SetColorForTime(1.5).start();
+        }
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
