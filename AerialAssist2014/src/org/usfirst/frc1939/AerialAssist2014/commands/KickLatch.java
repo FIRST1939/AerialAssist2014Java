@@ -31,7 +31,8 @@ public class  KickLatch extends Command {
             this.setTimeout(0.1);
             new SetColorForTime(1.5).start();
         }else{
-            this.setTimeout(Robot.catapult.limitSwitchDelay);
+            //this.setTimeout(Robot.catapult.limitSwitchDelay);
+            this.setTimeout(0.7);
         }
     }
     // Called repeatedly when this Command is scheduled to run
@@ -45,7 +46,7 @@ public class  KickLatch extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         //Stop motor when it has been hit and released
-        return !RobotMap.catapultLatchLimitSwitch.get() && this.isTimedOut();
+        return this.isTimedOut();//!RobotMap.catapultLatchLimitSwitch.get() && this.isTimedOut();
     }
     // Called once after isFinished returns true
     protected void end() {

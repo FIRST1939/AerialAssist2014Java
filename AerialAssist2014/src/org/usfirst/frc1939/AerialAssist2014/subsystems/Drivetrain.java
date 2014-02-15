@@ -67,8 +67,8 @@ public class Drivetrain extends Subsystem {
         rightBackEncoder.start();
         rightBackEncoder.setDistancePerPulse(distancePerPulse);
         
-        rightFrontEncoder.setReverseDirection(true);
-        rightBackEncoder.setReverseDirection(true);
+        leftFrontEncoder.setReverseDirection(true);
+        leftBackEncoder.setReverseDirection(true);
     }
     
     public void zeroEncoders(){
@@ -88,8 +88,8 @@ public class Drivetrain extends Subsystem {
         rightBackEncoder.reset();
         rightBackEncoder.start();
         
-        rightBackEncoder.setReverseDirection(true);
-        rightFrontEncoder.setReverseDirection(true);
+        leftBackEncoder.setReverseDirection(true);
+        leftFrontEncoder.setReverseDirection(true);
         
         leftBackEncoder.setDistancePerPulse(distancePerPulse);
         leftFrontEncoder.setDistancePerPulse(distancePerPulse);

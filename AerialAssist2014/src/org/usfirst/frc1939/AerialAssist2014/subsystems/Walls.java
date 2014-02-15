@@ -17,6 +17,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Walls extends Subsystem {
     
+    public boolean out;
+    
     public final double inSpeed = -0.9;
     public final double outSpeed = 0.9;
     public final double timeout = 0.5;
@@ -35,5 +37,6 @@ public class Walls extends Subsystem {
 	
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+        this.out = false;
     }
 }

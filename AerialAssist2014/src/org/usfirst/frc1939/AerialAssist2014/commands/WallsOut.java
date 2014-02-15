@@ -26,6 +26,7 @@ public class  WallsOut extends Command {
     protected void initialize() {
         RobotMap.wallsMotor.set(Robot.walls.outSpeed);
         this.setTimeout(Robot.walls.timeout);
+        Robot.walls.out = true;
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
