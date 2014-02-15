@@ -796,6 +796,54 @@ Children:
           name: When to Run
           validators: null
           value: whenPressed
+    - Name: PressurizeCatapultButton
+      Base: Joystick Button
+      Children: []
+      Properties:
+        Command: !!robotbuilder.data.properties.TypeSelectionProperty
+          default: None
+          name: Command
+          type: Command
+          validators: *id032
+          value: PressurizeCatapult
+        Button: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id033
+          default: '1'
+          name: Button
+          validators: null
+          value: '11'
+        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
+          name: Joystick, validators: null, value: MoveJoystick}
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id034
+          default: whileHeld
+          name: When to Run
+          validators: null
+          value: whenPressed
+    - Name: DepressurizeCatapultButton
+      Base: Joystick Button
+      Children: []
+      Properties:
+        Command: !!robotbuilder.data.properties.TypeSelectionProperty
+          default: None
+          name: Command
+          type: Command
+          validators: *id032
+          value: DepressurizeCatapult
+        Button: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id033
+          default: '1'
+          name: Button
+          validators: null
+          value: '10'
+        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
+          name: Joystick, validators: null, value: MoveJoystick}
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id034
+          default: whileHeld
+          name: When to Run
+          validators: null
+          value: whenPressed
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: &id035 ['1', '2', '3', '4']
@@ -806,30 +854,6 @@ Children:
   - Name: RotateJoystick
     Base: Joystick
     Children:
-    - Name: ResetEncodersButton
-      Base: Joystick Button
-      Children: []
-      Properties:
-        Command: !!robotbuilder.data.properties.TypeSelectionProperty
-          default: None
-          name: Command
-          type: Command
-          validators: *id032
-          value: ResetEncoders
-        Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id033
-          default: '1'
-          name: Button
-          validators: null
-          value: '8'
-        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: RotateJoystick}
-        When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id034
-          default: whileHeld
-          name: When to Run
-          validators: null
-          value: whenPressed
     - Name: WallsInButton
       Base: Joystick Button
       Children: []
@@ -870,54 +894,6 @@ Children:
           name: Button
           validators: null
           value: '10'
-        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: RotateJoystick}
-        When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id034
-          default: whileHeld
-          name: When to Run
-          validators: null
-          value: whenPressed
-    - Name: PressurizeCatapultButton
-      Base: Joystick Button
-      Children: []
-      Properties:
-        Command: !!robotbuilder.data.properties.TypeSelectionProperty
-          default: None
-          name: Command
-          type: Command
-          validators: *id032
-          value: PressurizeCatapult
-        Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id033
-          default: '1'
-          name: Button
-          validators: null
-          value: '9'
-        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: RotateJoystick}
-        When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id034
-          default: whileHeld
-          name: When to Run
-          validators: null
-          value: whenPressed
-    - Name: DepressurizeCatapultButton
-      Base: Joystick Button
-      Children: []
-      Properties:
-        Command: !!robotbuilder.data.properties.TypeSelectionProperty
-          default: None
-          name: Command
-          type: Command
-          validators: *id032
-          value: DepressurizeCatapult
-        Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id033
-          default: '1'
-          name: Button
-          validators: null
-          value: '11'
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
           name: Joystick, validators: null, value: RotateJoystick}
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
@@ -1289,14 +1265,6 @@ Children:
     Properties:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Catapult}
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: false}
-  - Name: MapButton
-    Base: Command
-    Children: []
-    Properties:
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: None}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
   - Name: DriveForward
