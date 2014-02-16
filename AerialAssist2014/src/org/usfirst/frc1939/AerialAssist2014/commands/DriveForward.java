@@ -16,8 +16,8 @@ import org.usfirst.frc1939.AerialAssist2014.RobotMap;
  */
 public class  DriveForward extends Command {
     private final double time;
-    private double rightPower = -0.5;
-    private double leftPower = 0.5;
+    private double rightPower = -0.25;
+    private final double leftPower = 0.25;
     private final double step = 0.01;
     
     public DriveForward(double time) {

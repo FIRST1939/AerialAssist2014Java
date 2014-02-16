@@ -16,7 +16,7 @@ import org.usfirst.frc1939.AerialAssist2014.RobotMap;
  */
 public class  Turn extends Command {
     
-    public static final double margin = 3;
+    public static final double margin = 1;
     private final int degrees;
     
     public Turn(int degrees) {
@@ -35,15 +35,15 @@ public class  Turn extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if(degrees>0){
-            RobotMap.drivetrainRobotDrive.mecanumDrive_Cartesian(0, 0, 1.0, 0);
+            RobotMap.drivetrainRobotDrive.mecanumDrive_Cartesian(0, 0, Robot.drivetrain.autonomousTurnSpeed, 0);
         }else if(degrees<0){
-            RobotMap.drivetrainRobotDrive.mecanumDrive_Cartesian(0, 0, -1.0, 0);
+            RobotMap.drivetrainRobotDrive.mecanumDrive_Cartesian(0, 0, -Robot.drivetrain.autonomousTurnSpeed, 0);
         }
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         double d = Robot.drivetrain.getDegrees();
-        return Math.abs(d-degrees)<=margin;
+        return Math.abs(d)>Math.abs(degrees);
     }
     // Called once after isFinished returns true
     protected void end() {
