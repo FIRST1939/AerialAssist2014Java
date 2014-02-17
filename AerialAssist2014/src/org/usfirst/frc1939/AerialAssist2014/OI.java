@@ -60,7 +60,6 @@ public class OI {
     public JoystickButton wallsInButton;
     public JoystickButton wallsOutButton;
     public Joystick rotateJoystick;
-    public JoystickButton shootButton2;
     public JoystickButton openButton2;
     public JoystickButton closeButton2;
     public JoystickButton toggleArmButton2;
@@ -88,8 +87,6 @@ public class OI {
         closeButton2.whenPressed(new CloseEverything());
         openButton2 = new JoystickButton(gamepad, 6);
         openButton2.whenPressed(new OpenEverything());
-        shootButton2 = new JoystickButton(gamepad, 10);
-        shootButton2.whenPressed(new Shoot());
         rotateJoystick = new Joystick(2);
         
         wallsOutButton = new JoystickButton(rotateJoystick, 10);
