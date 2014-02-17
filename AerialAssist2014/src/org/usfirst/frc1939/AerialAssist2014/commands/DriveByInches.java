@@ -18,6 +18,10 @@ public class  DriveByInches extends Command {
     private final double inches;
     private final int angle;
     private final double power;
+    private double turnPower;
+    private final double adjust = 0.005;
+    private final double margin = 3;
+    private final double turnPowerMax = 0.05;
     
     public DriveByInches(int angle, double inches, double power) {
         // Use requires() here to declare subsystem dependencies
@@ -29,6 +33,7 @@ public class  DriveByInches extends Command {
         this.inches = inches;
         this.angle = angle + 90; //Adds 90 degrees so that 0 degrees is forward
         this.power = power;
+        this.turnPower = 0;
     }
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -37,18 +42,34 @@ public class  DriveByInches extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         // Drive Speed - Degree - Turn Speed
-        RobotMap.drivetrainRobotDrive.mecanumDrive_Polar(power, angle, 0.0);
+        if(angle==90){
+            double d = Robot.drivetrain.getDegrees();
+            if(d>margin){
+                //Too far right
+                turnPower = turnPower - adjust;
+            }else if(d<-margin){
+                //Too far left
+                turnPower = turnPower + adjust;
+            }
+        }
+        if(turnPower>turnPowerMax){
+            turnPower = turnPowerMax;
+        }
+        RobotMap.drivetrainRobotDrive.mecanumDrive_Polar(power, angle, turnPower);
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+        /*
         System.out.println("Inputed Inches: " + inches);
         System.out.println("Inches: " + Robot.drivetrain.getDistance());
         System.out.println("Left Encoder: " + RobotMap.drivetrainLeftBackEncoder.get());
         System.out.println("Right Encoder: " + RobotMap.drivetrainRightBackEncoder.get());
         System.out.println("Left Distance: " + RobotMap.drivetrainLeftBackEncoder.getDistance());
         System.out.println("Right Distance: " + RobotMap.drivetrainRightBackEncoder.getDistance());
+        */
         System.out.println("X: " + Robot.drivetrain.getXDistance());
         System.out.println("Y: " + Robot.drivetrain.getYDistance());
+        System.out.println("Turn Power: " + turnPower);
         return Robot.drivetrain.getDistance()>= inches;
     }
     // Called once after isFinished returns true
