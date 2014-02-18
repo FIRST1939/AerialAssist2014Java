@@ -8,6 +8,7 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 package org.usfirst.frc1939.AerialAssist2014.commands;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc1939.AerialAssist2014.Robot;
 import org.usfirst.frc1939.AerialAssist2014.RobotMap;
@@ -15,6 +16,8 @@ import org.usfirst.frc1939.AerialAssist2014.RobotMap;
  *
  */
 public class  KickLatch extends Command {
+    
+    Timer delay;
     
     public KickLatch() {
         // Use requires() here to declare subsystem dependencies
@@ -31,8 +34,9 @@ public class  KickLatch extends Command {
             this.setTimeout(0.1);
             new SetColorForTime(1.5).start();
         }else{
-            //this.setTimeout(Robot.catapult.limitSwitchDelay);
-            this.setTimeout(0.7);
+            delay = new Timer();
+            delay.start();
+            this.setTimeout(0.65);
         }
     }
     // Called repeatedly when this Command is scheduled to run
@@ -45,15 +49,19 @@ public class  KickLatch extends Command {
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        //Stop motor when it has been hit and released
-        return this.isTimedOut();//!RobotMap.catapultLatchLimitSwitch.get() && this.isTimedOut();
+        return (!RobotMap.catapultLatchLimitSwitch.get() && offLimitSwitch()) || this.isTimedOut();
     }
     // Called once after isFinished returns true
     protected void end() {
+        delay.stop();
         RobotMap.catapultMotor.set(0.0);
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    }
+    
+    public boolean offLimitSwitch(){
+        return delay.get()>Robot.catapult.limitSwitchDelay;
     }
 }
