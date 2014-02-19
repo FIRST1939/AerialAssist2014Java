@@ -33,7 +33,7 @@ public class  DriveByInches extends Command {
         this.inches = inches;
         this.angle = angle + 90; //Adds 90 degrees so that 0 degrees is forward
         this.power = power;
-        this.turnPower = 0.07;
+        this.turnPower = Robot.drivetrain.turnCorrect;
     }
     // Called just before this Command runs the first time
     protected void initialize() {

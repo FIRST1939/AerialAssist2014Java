@@ -37,7 +37,6 @@ public class  DriveWithJoystick extends Command {
         System.out.println("Y: " + Robot.drivetrain.getYDistance());
         System.out.println("Distance: " + Robot.drivetrain.getDistance());
         System.out.println("Degrees: " + Robot.drivetrain.getDegrees());
-        
         if(Robot.oi.drivetrainTurbo.get()){
             //Turbo, Full speed
             Robot.drivetrain.drive(1);
