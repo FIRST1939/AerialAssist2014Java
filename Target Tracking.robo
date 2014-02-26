@@ -1,0 +1,50 @@
+<head><version>2.61.1</version></head>
+<Axis_Internet_Camera>
+  <auto_back_light>TRUE</auto_back_light>
+  <auto_exposure>FALSE</auto_exposure>
+  <auto_white_balance>TRUE</auto_white_balance>
+  <brightness_value>50</brightness_value>
+  <color_level_value>50</color_level_value>
+  <compression_index>5</compression_index>
+  <contrast_value>50</contrast_value>
+  <exposure_value>50</exposure_value>
+  <ip_address>10.19.39.11</ip_address>
+  <is_active>TRUE</is_active>
+  <password>FRC</password>
+  <port>80</port>
+  <sharpness_value>50</sharpness_value>
+  <username>FRC</username>
+</Axis_Internet_Camera>
+<RGB_Filter>
+  <channel>2</channel>
+  <hue_value>120</hue_value>
+  <hysteresis>255</hysteresis>
+  <min_value>240</min_value>
+  <result_type>4</result_type>
+</RGB_Filter>
+<Blob_Size>
+  <limit>2</limit>
+  <mask>FALSE</mask>
+  <max_area>0</max_area>
+  <min_area>5000</min_area>
+  <threshold>5</threshold>
+  <treat_as_color_image>FALSE</treat_as_color_image>
+</Blob_Size>
+<Blob_Replace>
+  <color_index>2</color_index>
+  <fill_shape>TRUE</fill_shape>
+  <order_array_on_x>FALSE</order_array_on_x>
+  <order_array_on_y>FALSE</order_array_on_y>
+  <overlay_image>Source</overlay_image>
+  <shape_index>15</shape_index>
+  <thickness>25</thickness>
+</Blob_Replace>
+<NetworkTables>
+  <delay>100</delay>
+  <filter_type_index>0</filter_type_index>
+  <hostname>10.19.39.2</hostname>
+  <port>1735</port>
+  <prefix>/Camera/</prefix>
+  <variables_to_send>BFR_COORDINATES</variables_to_send>
+  <variable_type_index>0</variable_type_index>
+</NetworkTables>
