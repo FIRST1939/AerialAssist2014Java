@@ -29,7 +29,7 @@ public class  PressurizeCatapult extends Command {
             this.setTimeout(Robot.catapult.pressurizeDelay);
         }else{
             this.setTimeout(0.1);
-            new SetColorForTime(1.5).start();
+            new SetColorForTime(0.75).start();
         }
     }
     // Called repeatedly when this Command is scheduled to run

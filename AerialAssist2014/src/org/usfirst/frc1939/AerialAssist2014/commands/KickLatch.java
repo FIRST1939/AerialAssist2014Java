@@ -32,7 +32,7 @@ public class  KickLatch extends Command {
         if(!Robot.arm.out){
             System.out.println("Arm not out");
             this.setTimeout(0.1);
-            new SetColorForTime(1.5).start();
+            new SetColorForTime(0.75).start();
         }else{
             delay = new Timer();
             delay.start();
