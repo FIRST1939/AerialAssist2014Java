@@ -1,1 +1,19 @@
-drive 0 108 0.25
+#Two ball working
+
+#start roller to hold ball infront
+#runrollers .5
+
+#similar to one ball auton
+drive 0 135 0.4
+arm out
+shoot
+
+#Pick up second ball and shoot 
+runrollers -1.0
+wait 1.0
+runrollers 0
+arm in
+wait 0.9
+arm out
+wait 0.8
+shoot

@@ -1,6 +1,0 @@
-#One ball working
-target 4
-arm out
-drive 0 70 1
-para shoot
-para drive 0 25 1
