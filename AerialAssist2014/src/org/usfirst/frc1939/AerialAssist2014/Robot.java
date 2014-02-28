@@ -78,13 +78,9 @@ public class Robot extends IterativeRobot {
         
         //Auto Chooser; Creates the menu for choosing autonomous mode
         autoChooser = new SendableChooser();
-        
-        autoChooser.addDefault("Command Based: Default", "file:///autonomous.txt");
-        for(int i = 1;i<7;i++){
-            String location = "file:///autonomous" + i + ".txt";
-            autoChooser.addObject("Command Based: " + i, location);
-        }
-        //autoChooser.addObject("Shoot On Target Test", new ShootOnTargetTestCommand());
+        UpdateDashboard cmd = new UpdateDashboard(autoChooser);
+        cmd.setRunWhenDisabled(true);
+        cmd.start();
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
         Robot.lights.setGreen();
     }
