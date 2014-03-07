@@ -29,22 +29,14 @@ public class  KickLatch extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        if(!Robot.arm.out){
-            System.out.println("Arm not out");
-            this.setTimeout(0.1);
-            new SetColorForTime(0.75).start();
-        }else{
-            delay = new Timer();
-            delay.start();
-            this.setTimeout(0.65);
-        }
+        delay = new Timer();
+        delay.start();
+        this.setTimeout(0.65);
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if(Robot.arm.out){
             RobotMap.catapultMotor.set(Robot.catapult.catapultKickSpeed);
-        }else{
-            System.out.println("Arm not out");
         }
     }
     // Make this return true when this Command no longer needs to run execute()
@@ -53,8 +45,8 @@ public class  KickLatch extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
-        delay.stop();
-        RobotMap.catapultMotor.set(0.0);
+            delay.stop();
+            RobotMap.catapultMotor.set(0.0);
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
