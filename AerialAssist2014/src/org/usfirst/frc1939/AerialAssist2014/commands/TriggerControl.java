@@ -32,7 +32,7 @@ public class  TriggerControl extends Command {
         double value = Robot.oi.gamepad.getRawAxis(3);
         if(value<-0.5 && ready){
             ready = false;
-            new Shoot().start();
+            new ShootIfReady().start();
         }else if(value>-0.5){
             ready = true;
         }
