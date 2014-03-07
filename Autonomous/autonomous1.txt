@@ -2,10 +2,12 @@
 
 #start roller to hold ball infront
 #runrollers .5
+wait 2.0
 
 #similar to one ball auton
 drive 0 135 0.4
 arm out
+wait 0.5
 shoot
 
 #Pick up second ball and shoot 
