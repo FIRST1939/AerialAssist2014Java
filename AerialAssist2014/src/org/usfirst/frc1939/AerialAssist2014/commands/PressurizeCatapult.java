@@ -14,6 +14,7 @@ import org.usfirst.frc1939.AerialAssist2014.Robot;
  *
  */
 public class  PressurizeCatapult extends Command {
+    
     public PressurizeCatapult() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -24,13 +25,8 @@ public class  PressurizeCatapult extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        if(Robot.arm.out){
-            Robot.catapult.pressurize();
-            this.setTimeout(Robot.catapult.pressurizeDelay);
-        }else{
-            this.setTimeout(0.1);
-            new SetColorForTime(0.75).start();
-        }
+        Robot.catapult.pressurize();
+        this.setTimeout(Robot.catapult.pressurizeDelay);
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {

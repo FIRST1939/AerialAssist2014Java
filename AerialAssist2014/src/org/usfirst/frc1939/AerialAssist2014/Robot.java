@@ -101,7 +101,6 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during autonomous
      */
     public void autonomousPeriodic() {
-        this.updateDashboard();
         Scheduler.getInstance().run();
     }
     public void teleopInit() {
@@ -115,48 +114,13 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        this.updateDashboard();
         Scheduler.getInstance().run();
     }
     /**
      * This function called periodically during test mode
      */
     public void testPeriodic() {
-        this.updateDashboard();
         LiveWindow.run();
     }
     
-    public void disabledPeriodic(){
-        this.updateDashboard();
-    }
-    
-    public void updateDashboard(){
-        counter++;
-        if(counter>=10){
-            counter = 0;
-            FileConnection fc;
-            String msg = "";
-            try {
-                fc = (FileConnection)Connector.open((String) autoChooser.getSelected(), Connector.READ);
-                if(!fc.exists()){
-                    msg = "File doesn't exist";
-                }else{
-                    BufferedReader buf = new BufferedReader(new InputStreamReader(fc.openInputStream()));
-                    String line = buf.readLine();
-                    if(line == null || line.equalsIgnoreCase("")){
-                        msg = "File is empty";
-                    }else{
-                        msg = line;
-                        if(msg.substring(0,1).equalsIgnoreCase("#")){
-                            msg = line.substring(1);
-                        }
-                    }
-                }
-                fc.close();
-            } catch (IOException ex) {
-                msg = msg + "IOException";
-            }
-            SmartDashboard.putString("Autonmous Selected:", msg);
-        }
-    }
 }
