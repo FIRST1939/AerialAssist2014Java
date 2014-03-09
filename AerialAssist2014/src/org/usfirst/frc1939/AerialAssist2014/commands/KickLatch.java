@@ -35,7 +35,7 @@ public class  KickLatch extends Command {
     protected void initialize() {
         count = 0;
         lastState = true;
-        delay = new Timer();
+        this.setTimeout(1.5);
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
@@ -50,7 +50,7 @@ public class  KickLatch extends Command {
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return count>=4;
+        return count>=4 || this.isTimedOut();
     }
     // Called once after isFinished returns true
     protected void end() {

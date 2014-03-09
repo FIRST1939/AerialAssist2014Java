@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Catapult extends Subsystem {
     
-    public final double pressurizeDelay = 0.2;
+    public final double pressurizeDelay = 0.3;
     public final double depressurizeDelay = 0.2;
     
     public final double catapultKickSpeed = -1.0;
