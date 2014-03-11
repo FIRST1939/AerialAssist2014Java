@@ -584,51 +584,7 @@ Children:
           name: Input Module (Digital)
           validators: *id027
           value: '1'
-    - Name: DownLimitSwitch
-      Base: Limit Switch
-      Children: []
-      Properties:
-        Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id024
-          default: '1'
-          name: Input Channel (Digital)
-          validators: *id025
-          value: '9'
-        Input Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id026
-          default: '1'
-          name: Input Module (Digital)
-          validators: *id027
-          value: '1'
-    - Name: Motor
-      Base: Speed Controller
-      Children: []
-      Properties:
-        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
-          default: '1'
-          name: Output Module (Digital)
-          validators: *id002
-          value: '1'
-        Type: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id003
-          default: Victor
-          name: Type
-          validators: null
-          value: Victor
-        Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id004
-          default: '1'
-          name: Output Channel (PWM)
-          validators: *id005
-          value: '7'
-    Properties:
-      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
-  - Name: Lights
-    Base: Subsystem
-    Children:
-    - Name: SpikeOne
+    - Name: ElectricSolenoid
       Base: Spike
       Children: []
       Properties:
@@ -643,6 +599,28 @@ Children:
           default: '1'
           name: Output Channel (Relay)
           validators: &id031 [RelayOutput]
+          value: '4'
+    Properties:
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+  - Name: Lights
+    Base: Subsystem
+    Children:
+    - Name: SpikeOne
+      Base: Spike
+      Children: []
+      Properties:
+        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id028
+          default: '1'
+          name: Output Module (Digital)
+          validators: *id029
+          value: '1'
+        Output Channel (Relay): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id030
+          default: '1'
+          name: Output Channel (Relay)
+          validators: *id031
           value: '2'
     - Name: SpikeTwo
       Base: Spike
@@ -1191,14 +1169,6 @@ Children:
     Base: Command Group
     Children: []
     Properties:
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: false}
-  - Name: ShootHalf
-    Base: Command
-    Children: []
-    Properties:
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: Catapult}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
   - Name: DriveForward
