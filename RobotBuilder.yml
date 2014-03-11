@@ -875,7 +875,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '12'
+          value: '7'
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
           name: Joystick, validators: null, value: RotateJoystick}
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
@@ -899,7 +899,7 @@ Children:
           default: '1'
           name: Button
           validators: null
-          value: '10'
+          value: '6'
         Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
           name: Joystick, validators: null, value: RotateJoystick}
         When to Run: !!robotbuilder.data.properties.ChoicesProperty
