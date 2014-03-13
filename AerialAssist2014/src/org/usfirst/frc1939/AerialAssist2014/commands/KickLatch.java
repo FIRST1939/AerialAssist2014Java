@@ -8,6 +8,7 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 package org.usfirst.frc1939.AerialAssist2014.commands;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc1939.AerialAssist2014.Robot;
@@ -16,10 +17,6 @@ import org.usfirst.frc1939.AerialAssist2014.RobotMap;
  *
  */
 public class  KickLatch extends Command {
-    
-    private int count;
-    private boolean lastState;
-    private Timer delay;
     
     //True is pressed and false is not pressed
     
@@ -33,28 +30,21 @@ public class  KickLatch extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        count = 0;
-        lastState = true;
-        this.setTimeout(1.5);
+        this.setTimeout(0.5);
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if(Robot.arm.out){
-            RobotMap.catapultMotor.set(Robot.catapult.catapultKickSpeed);
-            boolean currentState = !RobotMap.catapultLatchLimitSwitch.get();
-            if(currentState != lastState){
-                count++;
-            }
-            lastState = currentState;
+           RobotMap.catapultElectricSolenoid.set(Relay.Value.kOn);
         }
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return count>=4 || this.isTimedOut();
+        return this.isTimedOut();
     }
     // Called once after isFinished returns true
     protected void end() {
-            RobotMap.catapultMotor.set(0.0);
+            RobotMap.catapultElectricSolenoid.set(Relay.Value.kOff);
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
