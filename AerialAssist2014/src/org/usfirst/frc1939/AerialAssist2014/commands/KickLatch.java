@@ -30,7 +30,7 @@ public class  KickLatch extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        this.setTimeout(0.5);
+        this.setTimeout(0.3);
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
@@ -44,7 +44,7 @@ public class  KickLatch extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
-            RobotMap.catapultElectricSolenoid.set(Relay.Value.kOff);
+        RobotMap.catapultElectricSolenoid.set(Relay.Value.kOff);
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
