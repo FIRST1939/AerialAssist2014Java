@@ -14,6 +14,9 @@ import org.usfirst.frc1939.AerialAssist2014.Robot;
  *
  */
 public class  ShootIfReady extends Command {
+    
+    Command command;
+    
     public ShootIfReady() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -24,17 +27,18 @@ public class  ShootIfReady extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
         if(Robot.arm.out){
-            new Shoot().start();
+            command = new Shoot();
         }else{
-            new SetColorForTime(1.5).start();
+            command = new SetColorForTime(1.5);
         }
+        command.start();
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return !command.isRunning();
     }
     // Called once after isFinished returns true
     protected void end() {
