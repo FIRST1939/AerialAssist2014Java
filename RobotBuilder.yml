@@ -568,22 +568,6 @@ Children:
           name: Reverse Channel (Solenoid)
           validators: *id023
           value: '8'
-    - Name: LatchLimitSwitch
-      Base: Limit Switch
-      Children: []
-      Properties:
-        Input Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id024
-          default: '1'
-          name: Input Channel (Digital)
-          validators: *id025
-          value: '14'
-        Input Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id026
-          default: '1'
-          name: Input Module (Digital)
-          validators: *id027
-          value: '1'
     - Name: ElectricSolenoid
       Base: Spike
       Children: []
