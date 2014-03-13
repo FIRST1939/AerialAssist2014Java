@@ -9,7 +9,6 @@
 // it from being updated in the future.
 package org.usfirst.frc1939.AerialAssist2014.subsystems;
 import org.usfirst.frc1939.AerialAssist2014.RobotMap;
-import org.usfirst.frc1939.AerialAssist2014.commands.*;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 /**

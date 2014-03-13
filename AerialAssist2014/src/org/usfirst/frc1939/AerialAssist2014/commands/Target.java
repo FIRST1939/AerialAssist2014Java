@@ -9,9 +9,6 @@
 // it from being updated in the future.
 package org.usfirst.frc1939.AerialAssist2014.commands;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
-import edu.wpi.first.wpilibj.networktables2.type.NumberArray;
-import edu.wpi.first.wpilibj.tables.TableKeyNotDefinedException;
 import org.usfirst.frc1939.AerialAssist2014.Robot;
 import org.usfirst.frc1939.AerialAssist2014.RobotMap;
 /**

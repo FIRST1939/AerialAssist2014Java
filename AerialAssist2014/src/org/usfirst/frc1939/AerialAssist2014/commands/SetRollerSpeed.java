@@ -15,7 +15,7 @@ import org.usfirst.frc1939.AerialAssist2014.RobotMap;
  *
  */
 public class  SetRollerSpeed extends Command {
-    private double speed;
+    private final double speed;
     
     public SetRollerSpeed(double speed) {
         // Use requires() here to declare subsystem dependencies

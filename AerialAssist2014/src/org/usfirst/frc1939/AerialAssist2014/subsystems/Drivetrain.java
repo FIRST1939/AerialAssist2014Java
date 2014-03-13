@@ -11,7 +11,6 @@ package org.usfirst.frc1939.AerialAssist2014.subsystems;
 import org.usfirst.frc1939.AerialAssist2014.RobotMap;
 import org.usfirst.frc1939.AerialAssist2014.commands.*;
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.CounterBase.EncodingType; import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc1939.AerialAssist2014.Robot;
 /**

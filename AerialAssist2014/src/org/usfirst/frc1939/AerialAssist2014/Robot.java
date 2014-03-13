@@ -8,17 +8,12 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 package org.usfirst.frc1939.AerialAssist2014;
-import com.sun.squawk.io.BufferedReader;
-import com.sun.squawk.microedition.io.FileConnection;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import javax.microedition.io.Connector;
 import org.usfirst.frc1939.AerialAssist2014.commands.*;
 import org.usfirst.frc1939.AerialAssist2014.subsystems.*;
 /**

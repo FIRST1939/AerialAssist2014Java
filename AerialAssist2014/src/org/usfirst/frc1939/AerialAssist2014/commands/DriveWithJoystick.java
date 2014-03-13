@@ -10,7 +10,6 @@
 package org.usfirst.frc1939.AerialAssist2014.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc1939.AerialAssist2014.Robot;
-import org.usfirst.frc1939.AerialAssist2014.RobotMap;
 /**
  *
  */

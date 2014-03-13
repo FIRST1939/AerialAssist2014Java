@@ -15,7 +15,7 @@ import org.usfirst.frc1939.AerialAssist2014.Robot;
  */
 public class  SetColorForTime extends Command {
     
-    private double time;
+    private final double time;
     
     public SetColorForTime(double time) {
         // Use requires() here to declare subsystem dependencies
