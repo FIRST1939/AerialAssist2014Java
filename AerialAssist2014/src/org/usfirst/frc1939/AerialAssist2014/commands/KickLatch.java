@@ -8,7 +8,6 @@
 // update. Deleting the comments indicating the section will prevent
 // it from being updated in the future.
 package org.usfirst.frc1939.AerialAssist2014.commands;
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc1939.AerialAssist2014.Robot;
 import org.usfirst.frc1939.AerialAssist2014.RobotMap;
@@ -29,12 +28,12 @@ public class  KickLatch extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        this.setTimeout(1);
+        this.setTimeout(0.35);
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if(Robot.arm.out){
-           RobotMap.catapultElectricSolenoid.set(Relay.Value.kForward);
+           RobotMap.catapultmotor.set(Robot.catapult.catapultKickSpeed);
         }
     }
     // Make this return true when this Command no longer needs to run execute()
@@ -43,7 +42,7 @@ public class  KickLatch extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
-        RobotMap.catapultElectricSolenoid.set(Relay.Value.kOff);
+        RobotMap.catapultmotor.set(0);
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run

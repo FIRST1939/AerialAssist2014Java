@@ -568,7 +568,35 @@ Children:
           name: Reverse Channel (Solenoid)
           validators: *id023
           value: '8'
-    - Name: ElectricSolenoid
+    - Name: motor
+      Base: Speed Controller
+      Children: []
+      Properties:
+        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id001
+          default: '1'
+          name: Output Module (Digital)
+          validators: *id002
+          value: '1'
+        Type: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id003
+          default: Victor
+          name: Type
+          validators: null
+          value: Victor
+        Output Channel (PWM): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id004
+          default: '1'
+          name: Output Channel (PWM)
+          validators: *id005
+          value: '7'
+    Properties:
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+  - Name: Lights
+    Base: Subsystem
+    Children:
+    - Name: SpikeOne
       Base: Spike
       Children: []
       Properties:
@@ -583,28 +611,6 @@ Children:
           default: '1'
           name: Output Channel (Relay)
           validators: &id031 [RelayOutput]
-          value: '4'
-    Properties:
-      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Default Command, type: Command, validators: null, value: None}
-  - Name: Lights
-    Base: Subsystem
-    Children:
-    - Name: SpikeOne
-      Base: Spike
-      Children: []
-      Properties:
-        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id028
-          default: '1'
-          name: Output Module (Digital)
-          validators: *id029
-          value: '1'
-        Output Channel (Relay): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id030
-          default: '1'
-          name: Output Channel (Relay)
-          validators: *id031
           value: '2'
     - Name: SpikeTwo
       Base: Spike
