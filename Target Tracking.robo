@@ -12,22 +12,23 @@
   <is_active>TRUE</is_active>
   <password>FRC</password>
   <port>80</port>
+  <resolution>2</resolution>
   <sharpness_value>50</sharpness_value>
   <username>FRC</username>
 </Axis_Internet_Camera>
 <RGB_Filter>
   <channel>2</channel>
-  <hue_value>120</hue_value>
+  <hue_value>76</hue_value>
   <hysteresis>255</hysteresis>
-  <min_value>240</min_value>
+  <min_value>232</min_value>
   <result_type>4</result_type>
 </RGB_Filter>
 <Blob_Size>
   <limit>2</limit>
   <mask>FALSE</mask>
-  <max_area>0</max_area>
-  <min_area>5000</min_area>
-  <threshold>5</threshold>
+  <max_area>80000</max_area>
+  <min_area>70000</min_area>
+  <threshold>0</threshold>
   <treat_as_color_image>FALSE</treat_as_color_image>
 </Blob_Size>
 <Blob_Replace>
