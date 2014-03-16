@@ -39,7 +39,11 @@ public class Shoot extends CommandGroup {
         // arm.
         this.addSequential(new PressurizeCatapult());
         this.addSequential(new KickLatch());
+        this.addSequential(new Wait(0.2));
+        this.addSequential(new KickLatch());
         this.addSequential(new Wait(Robot.catapult.depressurizeDelay));
         this.addSequential(new DepressurizeCatapult());
+        this.addSequential(new Wait(0.75));
+        this.addSequential(new KickLatch());
     }
 }
