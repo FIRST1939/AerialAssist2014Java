@@ -53,15 +53,15 @@ public class  DriveWithJoystick extends Command {
     }
     
     public void drive(double multiplier){
-        double left = Robot.oi.leftStick.getY();
-        double right = Robot.oi.rightStick.getY();
-        if(Math.abs(left)<margin){
-            left = 0;
+        double y = Robot.oi.leftStick.getY();
+        double z = Robot.oi.leftStick.getX();
+        if(Math.abs(y)<margin){
+            y = 0;
         }
-        if(Math.abs(right)<margin){
-            right = 0;
+        if(Math.abs(z)<margin){
+            z = 0;
         }
         
-        RobotMap.drivetrainRobotDrive.tankDrive(left, right);
+        RobotMap.drivetrainRobotDrive.arcadeDrive(y, z);
     }
 }
