@@ -10,10 +10,15 @@
 package org.usfirst.frc1939.AerialAssist2014.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc1939.AerialAssist2014.Robot;
+import org.usfirst.frc1939.AerialAssist2014.RobotMap;
 /**
  *
  */
 public class  DriveWithJoystick extends Command {
+    
+    //Margin for joystick
+    public final double margin = 0.1;
+    
     public DriveWithJoystick() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -29,10 +34,10 @@ public class  DriveWithJoystick extends Command {
     protected void execute() {
         if(Robot.oi.drivetrainTurbo.get()){
             //Turbo, Full speed
-            Robot.drivetrain.drive(1);
+            drive(1);
         }else{
             //Half speed
-            Robot.drivetrain.drive(0.25);
+            drive(0.25);
         }
     }
     // Make this return true when this Command no longer needs to run execute()
@@ -45,5 +50,18 @@ public class  DriveWithJoystick extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    }
+    
+    public void drive(double multiplier){
+        double left = Robot.oi.leftStick.getY();
+        double right = Robot.oi.rightStick.getY();
+        if(Math.abs(left)<margin){
+            left = 0;
+        }
+        if(Math.abs(right)<margin){
+            right = 0;
+        }
+        
+        RobotMap.drivetrainRobotDrive.tankDrive(left, right);
     }
 }

@@ -87,7 +87,7 @@ public class CommandBasedAutonomous extends CommandGroup {
                             //Comment syntax
                             noCommand = true;
                         }else if(keyword.equalsIgnoreCase("drive")){
-                            command = new DriveByInches(Integer.parseInt(args[0]), Double.parseDouble(args[1]), Double.parseDouble(args[2]));
+                            command = new DriveByInches(Double.parseDouble(args[1]), Double.parseDouble(args[2]));
                         }else if(keyword.equalsIgnoreCase("turn")){
                             command = new Turn(Integer.parseInt(args[0]));
                         }else if(keyword.equalsIgnoreCase("target")){
