@@ -1,6 +1,6 @@
 #Two ball working
 
-wait 0.5
+wait 1.0
 
 #similar to one ball auton
 drive 0 140 0.4

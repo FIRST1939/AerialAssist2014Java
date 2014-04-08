@@ -1,0 +1,6 @@
+#One ball testing
+drive 0 79 1
+wait 2
+arm out
+wait 1
+shoot
