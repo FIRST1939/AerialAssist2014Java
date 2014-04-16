@@ -35,9 +35,9 @@ public class  Turn extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if(degrees>0){
-            RobotMap.drivetrainRobotDrive.mecanumDrive_Cartesian(0, 0, Robot.drivetrain.autonomousTurnSpeed, 0);
+            RobotMap.drivetrainRobotDrive.arcadeDrive(0, Robot.drivetrain.autonomousTurnSpeed);
         }else if(degrees<0){
-            RobotMap.drivetrainRobotDrive.mecanumDrive_Cartesian(0, 0, -Robot.drivetrain.autonomousTurnSpeed, 0);
+            RobotMap.drivetrainRobotDrive.arcadeDrive(0, -Robot.drivetrain.autonomousTurnSpeed);
         }
     }
     // Make this return true when this Command no longer needs to run execute()
@@ -47,10 +47,11 @@ public class  Turn extends Command {
     }
     // Called once after isFinished returns true
     protected void end() {
-        RobotMap.drivetrainRobotDrive.mecanumDrive_Polar(0, 0, 0);
+        Robot.drivetrain.stop();
     }
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        Robot.drivetrain.stop();
     }
 }

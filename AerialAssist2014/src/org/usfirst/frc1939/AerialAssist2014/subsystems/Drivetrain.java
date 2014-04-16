@@ -118,4 +118,8 @@ public class Drivetrain extends Subsystem {
         return radians * (360/(2*Math.PI)) * slipFactorRotation;
     }
     
+    public void stop(){
+        robotDrive.arcadeDrive(0, 0);
+    }
+    
 }
