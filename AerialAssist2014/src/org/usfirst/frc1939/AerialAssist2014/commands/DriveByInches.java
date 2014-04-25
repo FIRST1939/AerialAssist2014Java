@@ -50,7 +50,7 @@ public class  DriveByInches extends Command {
             turnPower = turnPowerMax;
         }
         */
-        RobotMap.drivetrainRobotDrive.tankDrive(power, power);
+        RobotMap.drivetrainRobotDrive.arcadeDrive(power, 0);
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

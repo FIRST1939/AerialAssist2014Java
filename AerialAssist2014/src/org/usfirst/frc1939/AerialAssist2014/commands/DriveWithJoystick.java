@@ -32,13 +32,15 @@ public class  DriveWithJoystick extends Command {
     }
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if(Robot.oi.drivetrainTurbo.get()){
+        /*
+        if(!Robot.oi.drivetrainTurbo.get()){
             //Turbo, Full speed
             drive(1);
         }else{
             //Half speed
-            drive(0.25);
-        }
+            drive(0.5);
+        }*/
+        drive(1.0);
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
@@ -54,7 +56,7 @@ public class  DriveWithJoystick extends Command {
     
     public void drive(double multiplier){
         double y = Robot.oi.leftStick.getY();
-        double z = Robot.oi.leftStick.getX();
+        double z = Robot.oi.leftStick.getX() + Robot.drivetrain.turnCorrect;
         if(Math.abs(y)<margin){
             y = 0;
         }
@@ -62,6 +64,6 @@ public class  DriveWithJoystick extends Command {
             z = 0;
         }
         
-        RobotMap.drivetrainRobotDrive.arcadeDrive(y, z);
+        RobotMap.drivetrainRobotDrive.arcadeDrive(y*multiplier, z*multiplier);
     }
 }

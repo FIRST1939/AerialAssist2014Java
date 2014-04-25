@@ -48,10 +48,10 @@ public class RobotMap {
         drivetrainLeftFront = new Talon(1, 1);
 	LiveWindow.addActuator("Drivetrain", "LeftFront", (Talon) drivetrainLeftFront);
         
-        drivetrainRightFront = new Talon(1, 2);
+        drivetrainRightFront = new Talon(1, 3);
 	LiveWindow.addActuator("Drivetrain", "RightFront", (Talon) drivetrainRightFront);
         
-        drivetrainLeftBack = new Talon(1, 3);
+        drivetrainLeftBack = new Talon(1, 2);
 	LiveWindow.addActuator("Drivetrain", "LeftBack", (Talon) drivetrainLeftBack);
         
         drivetrainRightBack = new Talon(1, 4);
@@ -64,6 +64,8 @@ public class RobotMap {
         drivetrainRobotDrive.setExpiration(0.1);
         drivetrainRobotDrive.setSensitivity(0.5);
         drivetrainRobotDrive.setMaxOutput(1.0);
+        drivetrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
+        drivetrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
         drivetrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
         drivetrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
         drivetrainLeftFrontEncoder = new Encoder(1, 1, 1, 2, false, EncodingType.k4X);
