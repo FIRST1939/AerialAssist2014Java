@@ -1,19 +1,7 @@
-#Two ball working
-
-wait 1.0
-
-#similar to one ball auton
-drive 0 140 0.4
+#One ball - Cheesy Vision
+target 3
+drive 29 -0.8
+wait 0.5
 arm out
-wait 1.3
-shoot
-
-#Pick up second ball and shoot 
-runrollers -1.0
-wait 0.8
-runrollers 0
-#arm in
-#wait 0.9
-#arm out
-#wait 0.8
+wait 0.2
 shoot
