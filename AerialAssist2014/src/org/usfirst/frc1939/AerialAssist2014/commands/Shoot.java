@@ -37,13 +37,11 @@ public class Shoot extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
+        this.addSequential(new ActivateMagnet());
+        this.addSequential(new Wait(0.1));
         this.addSequential(new PressurizeCatapult());
-        this.addSequential(new KickLatch());
-        this.addSequential(new Wait(0.2));
-        this.addSequential(new KickLatch());
+        this.addSequential(new DeactivateMagnet());
         this.addSequential(new Wait(Robot.catapult.depressurizeDelay));
         this.addSequential(new DepressurizeCatapult());
-        this.addSequential(new Wait(0.75));
-        this.addSequential(new KickLatch());
     }
 }
