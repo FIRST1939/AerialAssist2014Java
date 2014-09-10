@@ -25,7 +25,7 @@ public class  ActivateMagnet extends Command {
     }
     // Called just before this Command runs the first time
     protected void initialize() {
-        RobotMap.catapultMagnet.set(Relay.Value.kOn);
+        RobotMap.catapultMagnet.set(1.0);
         Robot.catapult.magnet_on = true;
     }
     // Called repeatedly when this Command is scheduled to run

@@ -38,7 +38,7 @@ public class RobotMap {
     public static DigitalInput wallsOutLimitSwitch;
     public static DoubleSolenoid catapultRightSolenoid;
     public static DoubleSolenoid catapultLeftSolenoid;
-    public static Relay catapultMagnet;
+    public static SpeedController catapultMagnet;
     public static Relay lightsSpikeOne;
     public static Relay lightsSpikeTwo;
     public static DigitalInput photoswitchBack;
@@ -115,8 +115,8 @@ public class RobotMap {
         catapultLeftSolenoid = new DoubleSolenoid(1, 7, 8);      
 	
         
-        catapultMagnet = new Relay(1, 4);
-	LiveWindow.addActuator("Catapult", "Magnet", catapultMagnet);
+        catapultMagnet = new Victor(1, 7);
+	LiveWindow.addActuator("Catapult", "Magnet", (Victor) catapultMagnet);
         
         lightsSpikeOne = new Relay(1, 2);
 	LiveWindow.addActuator("Lights", "SpikeOne", lightsSpikeOne);
