@@ -18,7 +18,7 @@ public class Catapult extends Subsystem {
     
     public boolean magnet_on = false;
     
-    public final double pressurizeDelay = 0.3;
+    public final double pressurizeDelay = 0.5;
     public final double depressurizeDelay = 0.2;
     
     public final double catapultKickSpeed = 1.0;
