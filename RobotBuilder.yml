@@ -564,12 +564,6 @@ Children:
       Name: LeftSolenoid
     - Children: []
       Properties:
-        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id001
-          default: '1'
-          name: Output Module (Digital)
-          validators: *id002
-          value: '1'
         Type: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id003
           default: Victor
@@ -582,8 +576,14 @@ Children:
           name: Output Channel (PWM)
           validators: *id005
           value: '7'
+        Output Module (Digital): !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id001
+          default: '1'
+          name: Output Module (Digital)
+          validators: *id002
+          value: '1'
       Base: Speed Controller
-      Name: motor
+      Name: Magnet
     Properties:
       Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Default Command, type: Command, validators: null, value: None}
@@ -717,30 +717,6 @@ Children:
           name: Command
           type: Command
           validators: *id032
-          value: KickLatch
-        Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id033
-          default: '1'
-          name: Button
-          validators: null
-          value: '9'
-        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: LeftStick}
-        When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id034
-          default: whileHeld
-          name: When to Run
-          validators: null
-          value: whenPressed
-      Base: Joystick Button
-      Name: KickLatchButton
-    - Children: []
-      Properties:
-        Command: !!robotbuilder.data.properties.TypeSelectionProperty
-          default: None
-          name: Command
-          type: Command
-          validators: *id032
           value: ShootIfReady
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id033
@@ -806,6 +782,30 @@ Children:
           value: whenPressed
       Base: Joystick Button
       Name: DepressurizeCatapultButton
+    - Children: []
+      Properties:
+        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
+          name: Joystick, validators: null, value: LeftStick}
+        Button: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id033
+          default: '1'
+          name: Button
+          validators: null
+          value: '9'
+        Command: !!robotbuilder.data.properties.TypeSelectionProperty
+          default: None
+          name: Command
+          type: Command
+          validators: *id032
+          value: ToggleMagnet
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id034
+          default: whileHeld
+          name: When to Run
+          validators: null
+          value: whenPressed
+      Base: Joystick Button
+      Name: ToggleMagnetButton
     Properties:
       Number: !!robotbuilder.data.properties.ChoicesProperty
         choices: &id035 ['1', '2', '3', '4']
@@ -1074,14 +1074,6 @@ Children:
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
-    Name: KickLatch
-  - Children: []
-    Properties:
-      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
-        name: Requires, type: Subsystem, validators: null, value: Catapult}
-      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: false}
-    Base: Command
     Name: DepressurizeCatapult
   - Children: []
     Properties:
@@ -1183,6 +1175,30 @@ Children:
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: ShootIfReady
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: ActivateMagnet
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: DeactivateMagnet
+  - Children: []
+    Properties:
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: ToggleMagnet
   Properties: {}
   Base: Commands
   Name: Commands
